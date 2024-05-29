@@ -20,7 +20,7 @@ void macros_handler(FILE *assembly_file) {
     LC++;
     if (is_macro_declaration_start(line)) {
       macro_recording = 1;
-      parse_line(line);
+      ParsedLine *parsed_line = parse_line(line);
     }
   }
 }

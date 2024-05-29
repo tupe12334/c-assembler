@@ -1,1 +1,3 @@
-struct Line *parse_line(char *line);
+#include "line.h"
+
+ParsedLine *parse_line(char *line);
