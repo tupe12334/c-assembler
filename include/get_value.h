@@ -1,1 +1,2 @@
+#pragma once
 char *get_value(char *line, int *line_cursor);
