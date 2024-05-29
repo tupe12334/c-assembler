@@ -1,3 +1,3 @@
 #include <stdio.h>
 
-void assemble(FILE *file);
+void assemble(FILE *assembly_file);
