@@ -25,7 +25,7 @@ FILE *fetch_file(char *full_file_name) {
 
   if (file == NULL) {
     printf("File %s does not exist\n", full_file_name);
-    exit(1);
+    exit(EXIT_FAILURE);
   }
 
   return file;

@@ -3,6 +3,7 @@
 #include "../include/utils.h"
 #include "../include/validation.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[]) {
   int i;
@@ -20,5 +21,5 @@ int main(int argc, char *argv[]) {
 
     fclose(file);
   }
-  return 0;
+  return EXIT_SUCCESS;
 }
