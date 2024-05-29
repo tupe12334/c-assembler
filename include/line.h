@@ -1,6 +1,6 @@
 
-struct Line {
+typedef struct {
   char *label;
   char *type;
   char *value;
-};
+} ParsedLine;
