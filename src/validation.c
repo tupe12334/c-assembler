@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 void validate_at_least_one_input(int argc) {
   if (argc < 2) {
@@ -13,19 +14,19 @@ void validate_at_least_one_input(int argc) {
 void validate_files_existing(int argc, char *argv[]) {
   int i;
   for (i = 1; i < argc; i++) {
-    FILE *file;
+
     char *file_name = argv[i];
 
     const char *full_file_name = parse_file_name(file_name);
 
-    file = fopen(full_file_name, "r");
-
-    if (file == NULL) {
+    if (access(full_file_name, F_OK) != 0) {
       printf("File %s does not exist\n", full_file_name);
       exit(1);
     }
-
-    fclose(file);
+    if (access(full_file_name, R_OK) != 0) {
+      printf("File %s is not readable\n", full_file_name);
+      exit(1);
+    }
   }
 }
 
