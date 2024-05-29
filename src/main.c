@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
     char *file_name = argv[i];
 
     char *full_file_name = parse_file_name(file_name);
+    validate_file_access(full_file_name);
 
     file = fetch_file(full_file_name);
 
