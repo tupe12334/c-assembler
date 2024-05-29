@@ -1,12 +1,13 @@
+#include "../include/utils.h"
 #include <regex.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #define LABEL_REGEX "^[A-Z]+:"
 #define MAX_MATCHES 100
 
-char *parse_label(char *line) {
+char *parse_label(char *line, int *line_cursor) {
   regex_t regex;
   regmatch_t matches[MAX_MATCHES];
 
@@ -19,7 +20,6 @@ char *parse_label(char *line) {
   reti = regexec(&regex, line, MAX_MATCHES, matches, 0);
   regfree(&regex);
   if (!reti) {
-
     char match[MAX_MATCHES];
     int start = matches[0].rm_so;
     int end = matches[0].rm_eo - 1;
@@ -27,6 +27,7 @@ char *parse_label(char *line) {
     match[end - start] = '\0';
     char *result = malloc(strlen(match) + 1);
     strcpy(result, match);
+    *line_cursor = end + 1;
     return result;
   }
   return NULL;
