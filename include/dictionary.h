@@ -15,7 +15,7 @@ typedef struct Dictionary {
   Entry *table[TABLE_SIZE];
 } Dictionary;
 
-Dictionary *create_dictionary();
+Dictionary *create_dictionary(void);
 void insert(Dictionary *dict, const char *key, ParsedLine *values,
             size_t value_count);
 ParsedLine *lookup(Dictionary *dict, const char *key, size_t *value_count);

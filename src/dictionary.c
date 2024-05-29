@@ -11,14 +11,15 @@ unsigned int hash(const char *key) {
   return hash % TABLE_SIZE;
 }
 
-Dictionary *create_dictionary() {
+Dictionary *create_dictionary(void) {
+  int i;
   Dictionary *dict = (Dictionary *)malloc(sizeof(Dictionary));
   if (dict == NULL) {
     fprintf(stderr, "Unable to allocate memory for dictionary.\n");
     exit(EXIT_FAILURE);
   }
 
-  for (int i = 0; i < TABLE_SIZE; i++) {
+  for (i = 0; i < TABLE_SIZE; i++) {
     dict->table[i] = NULL;
   }
 
