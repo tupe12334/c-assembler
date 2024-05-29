@@ -1,4 +1,5 @@
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -16,4 +17,16 @@ char *parse_file_name(const char *file_name) {
   strcat(full_file_name, ASSEMBLY_FILE_EXTENSION);
 
   return full_file_name;
+}
+
+FILE *fetch_file(char *full_file_name) {
+  FILE *file;
+  file = fopen(full_file_name, "r");
+
+  if (file == NULL) {
+    printf("File %s does not exist\n", full_file_name);
+    exit(1);
+  }
+
+  return file;
 }
