@@ -30,3 +30,9 @@ FILE *fetch_file(char *full_file_name) {
 
   return file;
 }
+
+void skip_white_spaces(char *line, int *line_cursor) {
+  while (line[*line_cursor] == ' ' || line[*line_cursor] == '\t') {
+    *line_cursor = *line_cursor + 1;
+  }
+}

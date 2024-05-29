@@ -9,7 +9,7 @@ LOOP:   prn     #48
         mov     *r6, K
         sub     r1,r4
         m_macr
-        dec K
+        dec     K
         jmp     LOOP
 END:    stop
 STR:    .string "abcd"
