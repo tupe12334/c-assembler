@@ -1,4 +1,5 @@
 #include "../include/constants.h"
+#include "../include/line.h"
 #include "../include/macro_utils.h"
 #include "../include/parser.h"
 #include <regex.h>

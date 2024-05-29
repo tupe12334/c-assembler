@@ -1,1 +1,1 @@
-void *parse_line(char *line);
+struct Line *parse_line(char *line);

@@ -36,3 +36,9 @@ void skip_white_spaces(char *line, int *line_cursor) {
     *line_cursor = *line_cursor + 1;
   }
 }
+
+char *trim_last_char(char *string) {
+  char *new_string = malloc(strlen(string) - sizeof(char));
+  strncpy(new_string, string, strlen(string) - 1);
+  return new_string;
+}
