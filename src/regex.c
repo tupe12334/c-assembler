@@ -9,6 +9,7 @@ char *extract_word(char *line, char *regex_pattern) {
   regex_t regex;
   regmatch_t matches[MAX_MATCHES];
   int reti;
+  char *result;
   reti = regcomp(&regex, regex_pattern, REG_EXTENDED);
   if (reti) {
     fprintf(stderr, "Could not compile regex\n");
@@ -22,7 +23,7 @@ char *extract_word(char *line, char *regex_pattern) {
     int end = matches[0].rm_eo;
     strncpy(match, &line[start], end - start);
     match[end - start] = '\0';
-    char *result = malloc(strlen(match) + 1);
+    result = malloc(strlen(match) + 1);
     strcpy(result, match);
     return result;
   }

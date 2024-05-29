@@ -1,5 +1,4 @@
 #include "../include/constants.h"
-#include "../include/line.h"
 #include "../include/macro_utils.h"
 #include "../include/parser.h"
 #include <regex.h>
@@ -8,7 +7,7 @@
 #include <string.h>
 
 void macros_handler(FILE *assembly_file) {
-
+  ParsedLine *parsed_line;
   unsigned short int macro_recording = 0;
 
   /* Line counter */
@@ -20,7 +19,7 @@ void macros_handler(FILE *assembly_file) {
     LC++;
     if (is_macro_declaration_start(line)) {
       macro_recording = 1;
-      ParsedLine *parsed_line = parse_line(line);
+      parsed_line = parse_line(line);
     }
   }
 }
