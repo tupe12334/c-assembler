@@ -16,8 +16,12 @@ struct Line *parse_line(char *line) {
   }
 
   parsed_line.label = parse_label(line, &line_cursor);
+  printf("Label: %s\n", parsed_line.label);
+  printf("Cursor: %d\n", line_cursor);
 
   parsed_line.type = parse_operation(line, &line_cursor);
+  printf("Type: %s\n", parsed_line.type);
+  printf("Cursor: %d\n", line_cursor);
   /*
     TODO check if there is : so there is label
     TODO check if its a operation or instuction line
