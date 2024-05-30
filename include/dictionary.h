@@ -15,7 +15,7 @@ typedef struct Dictionary {
 } Dictionary;
 
 unsigned int hash(const char *key);
-Dictionary *create_dictionary();
+Dictionary *create_dictionary(void);
 void insert(Dictionary *dict, const char *key, const char *value);
 char *lookup(Dictionary *dict, const char *key);
 void free_dictionary(Dictionary *dict);
