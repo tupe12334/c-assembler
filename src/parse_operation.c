@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define OPERATION_REGEX "^[a-z]+"
+#define OPERATION_REGEX "^[a-zA-Z_\\.][a-zA-Z0-9_]*"
 
 char *parse_operation(char *line, int *line_cursor) {
   char *type;
