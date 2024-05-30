@@ -43,15 +43,16 @@ void handle_recording(char **macro_recording, ParsedLine *parsed_line,
 }
 
 void macros_handler(FILE *assembly_file) {
+  unsigned long int LC;
+  char line[MAX_LINE_LENGTH];
   ParsedLine *parsed_line;
   char *macro_recording = NULL;
   Dictionary *dictionary = create_dictionary();
   DynamicString *am_file_content = malloc(sizeof(DynamicString));
-  initDynamicString(am_file_content);
-  /* Line counter */
-  unsigned long int LC = 0;
 
-  char line[MAX_LINE_LENGTH];
+  /* Line counter */
+  LC = 0;
+  initDynamicString(am_file_content);
 
   while (fgets(line, sizeof(line), assembly_file)) {
     incase_line_counter(&LC);

@@ -19,18 +19,6 @@ char *parse_file_name(const char *file_name) {
   return full_file_name;
 }
 
-FILE *fetch_file(char *full_file_name) {
-  FILE *file;
-  file = fopen(full_file_name, "r");
-
-  if (file == NULL) {
-    printf("File %s does not exist\n", full_file_name);
-    exit(EXIT_FAILURE);
-  }
-
-  return file;
-}
-
 void skip_white_spaces(char *line, int *line_cursor) {
   while (line[*line_cursor] == ' ' || line[*line_cursor] == '\t') {
     *line_cursor = *line_cursor + 1;

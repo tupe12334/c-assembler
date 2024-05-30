@@ -16,7 +16,7 @@ void initDynamicString(DynamicString *dstr) {
 
 void strcatDynamicString(DynamicString *dstr, const char *newStr) {
   size_t newLen = strlen(newStr);
-  dstr->size += newLen; // Increase the size
+  dstr->size += newLen;
   dstr->str = (char *)realloc(dstr->str, dstr->size);
   if (dstr->str == NULL) {
     fprintf(stderr, "Memory allocation failed\n");

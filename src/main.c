@@ -1,5 +1,6 @@
 
 #include "../include/assembler.h"
+#include "../include/file_utils.h"
 #include "../include/utils.h"
 #include "../include/validation.h"
 #include <stdio.h>
