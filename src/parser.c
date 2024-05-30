@@ -2,6 +2,7 @@
 #include "../include/line.h"
 #include "../include/parse_label.h"
 #include "../include/parse_operation.h"
+#include "../include/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -24,6 +25,7 @@ ParsedLine *parse_line(char *line) {
   parsed_line->label = parse_label(line, &line_cursor);
   parsed_line->type = parse_operation(line, &line_cursor);
   parsed_line->value = get_value(line, &line_cursor);
+  parsed_line->line = trim_last_char(line);
 
   return parsed_line;
 }
