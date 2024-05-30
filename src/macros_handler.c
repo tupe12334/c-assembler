@@ -14,21 +14,25 @@ void incase_line_counter(unsigned long int *LC) {
 
 void handle_recording(char **macro_recording, ParsedLine *parsed_line,
                       Dictionary *dictionary, unsigned long int LC) {
-
+  char *dictionary_value;
+  int line_length;
+  int current_dictionary_value_length;
+  int new_length;
+  char *combine_values;
   if (is_macro_declaration_end(parsed_line->type) == 0) {
     *macro_recording = NULL;
     printf("Exit macro_recording in line %lu\n", LC);
     return;
   }
 
-  char *dictionary_value = lookup(dictionary, *macro_recording);
+  dictionary_value = lookup(dictionary, *macro_recording);
 
-  int line_length = safe_strlen(parsed_line->line);
-  int current_dictionary_value_length = safe_strlen(dictionary_value);
+  line_length = safe_strlen(parsed_line->line);
+  current_dictionary_value_length = safe_strlen(dictionary_value);
 
-  int new_length = line_length + current_dictionary_value_length + 1;
+  new_length = line_length + current_dictionary_value_length + 1;
 
-  char *combine_values = (char *)malloc(new_length * sizeof(char));
+  combine_values = (char *)malloc(new_length * sizeof(char));
   if (dictionary_value != NULL) {
     strcpy(combine_values, dictionary_value);
   }
@@ -48,11 +52,11 @@ void macros_handler(FILE *assembly_file) {
   char line[MAX_LINE_LENGTH];
 
   while (fgets(line, sizeof(line), assembly_file)) {
+    ParsedLine *temp_parsed_line_list;
     incase_line_counter(&LC);
 
     parsed_line = parse_line(line);
-    ParsedLine *temp_parsed_line_list = NULL;
-
+    temp_parsed_line_list = NULL;
     if (is_macro_declaration_start(parsed_line->type) == 0) {
       macro_recording = parsed_line->value;
       printf("Enter macro_recording in line %lu\n", LC);
@@ -61,7 +65,16 @@ void macros_handler(FILE *assembly_file) {
 
     if (macro_recording != NULL) {
       handle_recording(&macro_recording, parsed_line, dictionary, LC);
-      puts(lookup(dictionary, macro_recording));
+      continue;
+    }
+
+    if (is_known_operator(parsed_line->type) == 0) {
+      char *macr_value = lookup(dictionary, parsed_line->type);
+      if (macr_value != NULL) {
+        printf("Found a macr use in line %d\n", LC);
+        continue;
+      }
+      printf("Unknown operator in line %lu\n", LC);
       continue;
     }
   }
