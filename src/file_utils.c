@@ -14,9 +14,9 @@ FILE *fetch_file(char *full_file_name) {
   return file;
 }
 
-FILE *write_file(char *content) {
+FILE *write_file(char *filename, char *content) {
   FILE *file;
-  file = fopen("output.ob", "w");
+  file = fopen(filename, "w");
 
   if (file == NULL) {
     printf("File output.ob does not exist\n");

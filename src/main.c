@@ -12,13 +12,16 @@ int main(int argc, char *argv[]) {
   for (i = 1; i < argc; i++) {
     FILE *file;
     char *file_name = argv[i];
+    File_Meta file_meta;
 
     char *full_file_name = parse_file_name(file_name);
     validate_file_access(full_file_name);
 
     file = fetch_file(full_file_name);
 
-    assemble(file);
+    file_meta.filename = file_name;
+
+    assemble(file, file_meta);
 
     fclose(file);
   }

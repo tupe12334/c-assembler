@@ -1,17 +1,13 @@
 #include "../include/constants.h"
 #include "../include/dictionary.h"
 #include "../include/dynamic_string.h"
+#include "../include/file_utils.h"
 #include "../include/macro_utils.h"
 #include "../include/parser.h"
 #include "../include/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-void incase_line_counter(unsigned long int *LC) {
-  *LC += 1;
-  return;
-}
 
 void handle_recording(char **macro_recording, ParsedLine *parsed_line,
                       Dictionary *dictionary, unsigned long int LC) {
@@ -42,7 +38,7 @@ void handle_recording(char **macro_recording, ParsedLine *parsed_line,
   free(combine_values);
 }
 
-void macros_handler(FILE *assembly_file) {
+void macros_handler(FILE *assembly_file, char *filename) {
   unsigned long int LC;
   char line[MAX_LINE_LENGTH];
   ParsedLine *parsed_line;
@@ -84,6 +80,8 @@ void macros_handler(FILE *assembly_file) {
     strcatDynamicString(am_file_content, "\n");
   }
   puts(am_file_content->str);
+
+  write_file(strcat(filename, ".am"), am_file_content->str);
 
   free_dictionary(dictionary);
   freeDynamicString(am_file_content);

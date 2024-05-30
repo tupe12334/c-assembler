@@ -38,3 +38,8 @@ unsigned short int is_known_operator(char operator[]) {
 
   return 0;
 }
+
+void incase_line_counter(unsigned long int *LC) {
+  *LC += 1;
+  return;
+}
