@@ -42,3 +42,7 @@ char *trim_last_char(char *string) {
   strncpy(new_string, string, strlen(string) - 1);
   return new_string;
 }
+
+int safe_strlen(const char *string) {
+  return string != NULL ? strlen(string) : 0;
+}
