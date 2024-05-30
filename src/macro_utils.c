@@ -1,4 +1,3 @@
-#include "../include/array_utils.h"
 #include "../include/constants.h"
 #include "../include/instructions_list.h"
 #include "../include/line.h"

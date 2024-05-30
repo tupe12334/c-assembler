@@ -71,12 +71,13 @@ void macros_handler(FILE *assembly_file) {
     if (is_known_operator(parsed_line->type) == 0) {
       char *macr_value = lookup(dictionary, parsed_line->type);
       if (macr_value != NULL) {
-        printf("Found a macr use in line %d\n", LC);
+        printf("Found a macr use in line %lu\n", LC);
         continue;
       }
       printf("Unknown operator in line %lu\n", LC);
       continue;
     }
+    free(temp_parsed_line_list);
   }
 
   free_dictionary(dictionary);
