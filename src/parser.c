@@ -6,8 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned short int is_comment(char *line) { return line[0] == ';'; }
-
 ParsedLine *parse_line(char *line) {
   int line_cursor = 0;
   ParsedLine *parsed_line = malloc(sizeof(ParsedLine));
