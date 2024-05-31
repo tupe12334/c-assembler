@@ -19,7 +19,7 @@ void write_file(char *filename, char *content) {
   file = fopen(filename, "w");
 
   if (file == NULL) {
-    printf("File output.ob does not exist\n");
+    printf("File %s does not exist\n", filename);
     exit(EXIT_FAILURE);
   }
 
@@ -34,7 +34,7 @@ void append_to_file(char *filename, char *content) {
   file = fopen(filename, "a");
 
   if (file == NULL) {
-    printf("File output.ob does not exist\n");
+    printf("File %s does not exist\n", filename);
     exit(EXIT_FAILURE);
   }
 

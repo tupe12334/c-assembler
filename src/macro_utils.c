@@ -1,4 +1,5 @@
 #include "../include/constants.h"
+#include "../include/file_utils.h"
 #include "../include/instructions_list.h"
 #include "../include/line.h"
 #include "../include/op_codes.h"
@@ -63,4 +64,8 @@ char *append_file_ext(char *filename, char *extention) {
   strcpy(new_filename, filename);
   strcat(new_filename, extention);
   return new_filename;
+}
+
+FILE *fetch_postmacro_file(char *filename) {
+  return fetch_file(append_file_ext(filename, ".am"));
 }
