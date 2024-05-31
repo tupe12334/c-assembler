@@ -3,6 +3,7 @@
 #include "../include/instructions_list.h"
 #include "../include/line.h"
 #include "../include/op_codes.h"
+#include "../include/types.h"
 #include "../include/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,7 +43,7 @@ unsigned short int is_known_operator(char operator[]) {
   return FALSE;
 }
 
-void incase_line_counter(unsigned long int *LC) {
+void incase_line_counter(counter *LC) {
   *LC += 1;
   return;
 }

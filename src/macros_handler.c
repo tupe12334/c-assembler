@@ -4,6 +4,7 @@
 #include "../include/file_utils.h"
 #include "../include/macro_utils.h"
 #include "../include/parser.h"
+#include "../include/types.h"
 #include "../include/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,7 +40,7 @@ void handle_recording(char **macro_recording, ParsedLine *parsed_line,
 }
 
 void macros_handler(FILE *assembly_file, char *filename) {
-  unsigned long int LC;
+  counter LC;
   char line[MAX_LINE_LENGTH];
   ParsedLine *parsed_line;
   char *am_filename;
