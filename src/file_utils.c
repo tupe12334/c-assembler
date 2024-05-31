@@ -14,7 +14,7 @@ FILE *fetch_file(char *full_file_name) {
   return file;
 }
 
-FILE *write_file(char *filename, char *content) {
+void write_file(char *filename, char *content) {
   FILE *file;
   file = fopen(filename, "w");
 
@@ -26,5 +26,25 @@ FILE *write_file(char *filename, char *content) {
   fprintf(file, "%s", content);
   fclose(file);
 
-  return file;
+  return;
+}
+
+void append_to_file(char *filename, char *content) {
+  FILE *file;
+  file = fopen(filename, "a");
+
+  if (file == NULL) {
+    printf("File output.ob does not exist\n");
+    exit(EXIT_FAILURE);
+  }
+
+  fprintf(file, "%s\n", content);
+  fclose(file);
+
+  return;
+}
+
+void reset_file(char *filename) {
+  write_file(filename, "");
+  return;
 }

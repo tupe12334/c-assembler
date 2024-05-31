@@ -2,4 +2,6 @@
 #include <stdio.h>
 
 FILE *fetch_file(char *full_file_name);
-FILE *write_file(char *filename, char *content);
+void write_file(char *filename, char *content);
+void append_to_file(char *filename, char *content);
+void reset_file(char *filename);

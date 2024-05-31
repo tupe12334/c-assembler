@@ -42,16 +42,22 @@ void macros_handler(FILE *assembly_file, char *filename) {
   unsigned long int LC;
   char line[MAX_LINE_LENGTH];
   ParsedLine *parsed_line;
+  char *am_filename;
   char *macro_recording = NULL;
   Dictionary *dictionary = create_dictionary();
-  DynamicString *am_file_content = malloc(sizeof(DynamicString));
 
   /* Line counter */
   LC = 0;
-  initDynamicString(am_file_content);
+
+  am_filename = append_file_ext(filename, ".am");
+  reset_file(am_filename);
 
   while (fgets(line, sizeof(line), assembly_file)) {
     incase_line_counter(&LC);
+
+    if (is_comment(line) || is_line_empty(line)) {
+      continue;
+    };
 
     parsed_line = parse_line(line);
     if (is_macro_declaration_start(parsed_line->type) == 0) {
@@ -65,25 +71,20 @@ void macros_handler(FILE *assembly_file, char *filename) {
       continue;
     }
 
-    if (is_known_operator(parsed_line->type) == 0) {
+    if (is_known_operator(parsed_line->type) == FALSE) {
       char *macr_value = lookup(dictionary, parsed_line->type);
       if (macr_value != NULL) {
         printf("Found a macr use in line %lu\n", LC);
-        strcatDynamicString(am_file_content, macr_value);
-        strcatDynamicString(am_file_content, "\n");
+        append_to_file(am_filename, macr_value);
         continue;
       }
       printf("Unknown operator in line %lu\n", LC);
       exit(EXIT_FAILURE);
     }
-    strcatDynamicString(am_file_content, parsed_line->line);
-    strcatDynamicString(am_file_content, "\n");
+    append_to_file(am_filename, parsed_line->line);
   }
-  puts(am_file_content->str);
-
-  write_file(strcat(filename, ".am"), am_file_content->str);
 
   free_dictionary(dictionary);
-  freeDynamicString(am_file_content);
+
   puts("Finished macros_handler");
 }
