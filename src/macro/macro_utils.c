@@ -1,7 +1,7 @@
-#include "../include/constants.h"
-#include "../include/file_utils.h"
-#include "../include/line.h"
-#include "../include/types.h"
+#include "../../include/constants.h"
+#include "../../include/file_utils.h"
+#include "../../include/line.h"
+#include "../../include/types.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,6 +1,6 @@
-#include "../include/constants.h"
-#include "../include/line.h"
-#include "../include/meta_assembler.h"
+#include "../../include/constants.h"
+#include "../../include/line.h"
+#include "../../include/meta_assembler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

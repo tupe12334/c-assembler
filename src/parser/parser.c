@@ -1,9 +1,9 @@
-#include "../include/get_value.h"
-#include "../include/line.h"
-#include "../include/parse_label.h"
-#include "../include/parse_line_type.h"
-#include "../include/parse_operation.h"
-#include "../include/utils.h"
+#include "../../include/get_value.h"
+#include "../../include/line.h"
+#include "../../include/parse_label.h"
+#include "../../include/parse_line_type.h"
+#include "../../include/parse_operation.h"
+#include "../../include/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 
