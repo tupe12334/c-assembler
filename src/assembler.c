@@ -13,5 +13,6 @@ void assemble(FILE *assembly_file, File_Meta file_meta,
   counter DC = 0;
   macros_handler(assembly_file, meta_assembler, file_meta.filename);
   post_macro_file = fetch_postmacro_file(file_meta.filename);
+  meta_assembler.pase = FIRST_RUN;
   first_pass_handler(post_macro_file, meta_assembler);
 }
