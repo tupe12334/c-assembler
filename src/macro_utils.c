@@ -1,10 +1,7 @@
 #include "../include/constants.h"
 #include "../include/file_utils.h"
-#include "../include/instructions_list.h"
 #include "../include/line.h"
-#include "../include/op_codes.h"
 #include "../include/types.h"
-#include "../include/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,29 +15,6 @@ unsigned short int is_macro_declaration_start(char *type) {
 
 unsigned short int is_macro_declaration_end(char *type) {
   return strcmp(type, MACRO_END);
-}
-
-/**
-This function runs on the op_code object "name" values and on the instructions
-array and compare if the operator is known.
-*/
-unsigned short int is_known_operator(char operator[]) {
-
-  int i;
-
-  for (i = 0; i < INSTRUCTIONS_LIST_SIZE; i++) {
-    if (strcmp(operator, instructions[i]) == 0) {
-      return TRUE;
-    }
-  }
-
-  for (i = 0; i < OP_CODES_LENGTH; i++) {
-    if (strcmp(operator, op_codes[i].name) == 0) {
-      return TRUE;
-    }
-  }
-
-  return FALSE;
 }
 
 void incase_line_counter(counter *LC) {

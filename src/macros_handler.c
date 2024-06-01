@@ -2,7 +2,9 @@
 #include "../include/dictionary.h"
 #include "../include/dynamic_string.h"
 #include "../include/file_utils.h"
+#include "../include/is_known_operator.h"
 #include "../include/macro_utils.h"
+#include "../include/meta_assembler.h"
 #include "../include/parser.h"
 #include "../include/types.h"
 #include "../include/utils.h"
@@ -39,7 +41,8 @@ void handle_recording(char **macro_recording, ParsedLine *parsed_line,
   free(combine_values);
 }
 
-void macros_handler(FILE *assembly_file, char *filename) {
+void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
+                    char *filename) {
   counter LC;
   char line[MAX_LINE_LENGTH];
   ParsedLine *parsed_line;
@@ -60,7 +63,7 @@ void macros_handler(FILE *assembly_file, char *filename) {
       continue;
     };
 
-    parsed_line = parse_line(line);
+    parsed_line = parse_line(line, meta_assembler);
     if (is_macro_declaration_start(parsed_line->type) == 0) {
       macro_recording = parsed_line->value;
       printf("Enter macro_recording in line %lu\n", LC);
@@ -72,7 +75,7 @@ void macros_handler(FILE *assembly_file, char *filename) {
       continue;
     }
 
-    if (is_known_operator(parsed_line->type) == FALSE) {
+    if (is_known_operator(parsed_line->type, meta_assembler) == FALSE) {
       char *macr_value = lookup(dictionary, parsed_line->type);
       if (macr_value != NULL) {
         printf("Found a macr use in line %lu\n", LC);
@@ -86,6 +89,8 @@ void macros_handler(FILE *assembly_file, char *filename) {
   }
 
   free_dictionary(dictionary);
-
+  free(parsed_line);
+  free(am_filename);
+  free(macro_recording);
   puts("Finished macros_handler");
 }

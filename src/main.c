@@ -1,6 +1,7 @@
 
 #include "../include/assembler.h"
 #include "../include/file_utils.h"
+#include "../include/meta_assembler.h"
 #include "../include/utils.h"
 #include "../include/validation.h"
 #include <stdio.h>
@@ -13,6 +14,7 @@ int main(int argc, char *argv[]) {
     FILE *file;
     char *file_name = argv[i];
     File_Meta file_meta;
+    MetaAssembler meta_assembler;
 
     char *full_file_name = parse_file_name(file_name);
     validate_file_access(full_file_name);
@@ -20,8 +22,8 @@ int main(int argc, char *argv[]) {
     file = fetch_file(full_file_name);
 
     file_meta.filename = file_name;
-
-    assemble(file, file_meta);
+    meta_assembler = meta_assembler_init();
+    assemble(file, file_meta, meta_assembler);
 
     fclose(file);
   }
