@@ -21,8 +21,8 @@ ParsedLine *parse_line(TokenizedLine tokenized_line,
   parsed_line->line_type =
       command_to_line_type(parsed_line->tokens.type, meta_assembler);
 
-  puts(parsed_line->tokens.type);
   parsed_line->operators_amount =
-      get_operators_amount(parsed_line->tokens.type);
+      get_operators_amount(parsed_line->tokens.type, meta_assembler);
+
   return parsed_line;
 }
