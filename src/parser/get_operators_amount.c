@@ -39,6 +39,7 @@ enum Operators_amount get_operators_amount(char *command,
   case 15:
     return NONE;
   }
+
   printf("There was a bug in get_operators_amount with the value %s\n",
          command);
   exit(EXIT_FAILURE);

@@ -1,5 +1,6 @@
 
 #include "../../include/constants.h"
+#include "../../include/is_instruction.h"
 #include "../../include/meta_assembler.h"
 #include "../../include/utils.h"
 #include <string.h>
@@ -13,10 +14,8 @@ unsigned short int is_known_operator(char command[],
 
   int i;
 
-  for (i = 0; i < INSTRUCTIONS_LIST_SIZE; i++) {
-    if (strcmp(command, meta_assembler.instructions[i]) == 0) {
-      return TRUE;
-    }
+  if (is_instruction(meta_assembler, command) == TRUE) {
+    return TRUE;
   }
 
   for (i = 0; i < OP_CODES_LENGTH; i++) {

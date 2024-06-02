@@ -1,4 +1,5 @@
 #include "../../include/constants.h"
+#include "../../include/is_instruction.h"
 #include "../../include/line.h"
 #include "../../include/meta_assembler.h"
 #include <stdio.h>
@@ -13,10 +14,8 @@ enum LineType command_to_line_type(char *command,
   }
 
   if (command[0] == '.') {
-    for (i = 0; i < INSTRUCTIONS_LIST_SIZE; i++) {
-      if (strcmp(command, meta_assembler.instructions[i]) == 0) {
-        return INSTRUCTION;
-      }
+    if (is_instruction(meta_assembler, command) == TRUE) {
+      return INSTRUCTION;
     }
   }
 
