@@ -18,3 +18,5 @@ unsigned short int is_comment(char *line);
 unsigned short int is_line_empty(char *line);
 
 char *ltrim(char *s);
+
+unsigned short int get_operator_index(char *opcode);

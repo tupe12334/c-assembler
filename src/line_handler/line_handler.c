@@ -1,9 +1,9 @@
 #include "../../include/line_handler.h"
 
-void line_handler(ParsedLine *parsed_line) {
+void line_handler(DynamicArray *program, ParsedLine *parsed_line) {
   switch (parsed_line->line_type) {
   case OPERATION:
-    handle_operation(parsed_line);
+    handle_operation(program, parsed_line);
     break;
     // TODO
     //   case INSTRUCTION:

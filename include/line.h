@@ -19,6 +19,7 @@ typedef struct {
 
 typedef struct {
   ParsedLine *parsed_line;
+  unsigned short int opcode;
   char *operand_a;
   char *operand_b;
 } OperatorLine;

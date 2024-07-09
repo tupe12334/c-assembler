@@ -1,4 +1,5 @@
 
+#include "../../include/op_codes.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -64,4 +65,14 @@ int array_length(char **array) {
     i++;
   }
   return i;
+}
+
+unsigned short int get_operator_index(char *opcode) {
+  unsigned short int i, op_code_index;
+  for (i = 0; i < get_op_codes_length(); i++) {
+    if (strcmp(opcode, get_op_codes()[i]) == 0) {
+      op_code_index = i;
+    }
+  }
+  return op_code_index;
 }

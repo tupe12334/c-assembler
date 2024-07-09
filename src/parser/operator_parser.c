@@ -31,5 +31,6 @@ OperatorLine *parse_operator_line(ParsedLine *parsed_line) {
   operator_line->operand_a = get_first_operand(parsed_line->tokens.value);
   operator_line->operand_b =
       get_second_operand(operator_line->operand_a, parsed_line->tokens.value);
+  operator_line->opcode = get_operator_index(parsed_line->tokens.type);
   return operator_line;
 }
