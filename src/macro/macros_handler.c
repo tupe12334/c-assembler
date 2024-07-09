@@ -93,4 +93,5 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
   free(am_filename);
   free(macro_recording);
   puts("Finished macros_handler");
+  puts(COMMENT_LINE_BREAK);
 }
