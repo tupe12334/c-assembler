@@ -56,7 +56,7 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
   reset_file(am_filename);
 
   while (fgets(line, sizeof(line), assembly_file)) {
-    incase_line_counter(&LC);
+    LC++;
 
     if (is_comment(line) || is_line_empty(line)) {
       continue;

@@ -17,11 +17,6 @@ unsigned short int is_macro_declaration_end(char *type) {
   return strcmp(type, MACRO_END);
 }
 
-void incase_line_counter(counter *LC) {
-  *LC += 1;
-  return;
-}
-
 unsigned short int is_comment(char *line) { return line[0] == ';'; }
 unsigned short int is_line_empty(char *line) {
   int i;

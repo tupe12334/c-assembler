@@ -1,1 +1,2 @@
-MAIN: add r3, LIST
+MAIN:   add     r3, LIST
+        jsr     fn1
