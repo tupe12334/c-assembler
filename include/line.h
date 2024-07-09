@@ -16,3 +16,9 @@ typedef struct {
   enum LineType line_type;
   enum Operators_amount operators_amount;
 } ParsedLine;
+
+typedef struct {
+  ParsedLine *parsed_line;
+  char *operand_a;
+  char *operand_b;
+} OperatorLine;

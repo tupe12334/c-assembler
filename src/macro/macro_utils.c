@@ -2,6 +2,7 @@
 #include "../../include/file_utils.h"
 #include "../../include/line.h"
 #include "../../include/types.h"
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,7 +22,8 @@ unsigned short int is_comment(char *line) { return line[0] == ';'; }
 unsigned short int is_line_empty(char *line) {
   int i;
   for (i = 0; i < strlen(line); i++) {
-    if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t') {
+
+    if (isspace(line[i]) && line[i] != '\n' && line[i] != '\t') {
       return 0;
     }
   }

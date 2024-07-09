@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 
 describe("testing macro runner", () => {
-  test.each(["macro", "end_line"])(
+  test.each(["macro", "end_line", "main"])(
     "testing macro runner %s",
     async (fileName: string) => {
       // compare macro.am in examples with macro.am in expectations
