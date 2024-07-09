@@ -1,4 +1,5 @@
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,10 +26,32 @@ void skip_white_spaces(char *line, int *line_cursor) {
   }
 }
 
-char *trim_last_char(char *string) {
-  char *new_string = malloc(strlen(string) - sizeof(char));
-  strncpy(new_string, string, strlen(string) - 1);
-  return new_string;
+char *rtrim(const char *str) {
+  int n = strlen(str);
+
+  // Find the position of the last non-whitespace character
+  while (n > 0 && isspace((unsigned char)str[n - 1])) {
+    n--;
+  }
+
+  // Allocate memory for the new trimmed string
+  char *trimmed = (char *)malloc(n + 1);
+  if (trimmed == NULL) {
+    fprintf(stderr, "Memory allocation failed\n");
+    exit(EXIT_FAILURE);
+  }
+
+  // Copy the trimmed portion of the string to the new string
+  strncpy(trimmed, str, n);
+  trimmed[n] = '\0'; // Null-terminate the new string
+
+  return trimmed;
+}
+
+char *ltrim(char *s) {
+  while (isspace((unsigned char)*s))
+    s++;
+  return s;
 }
 
 int safe_strlen(const char *string) {

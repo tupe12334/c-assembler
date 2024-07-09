@@ -10,7 +10,7 @@ async function main() {
   for (const file of notAsFiles) {
     await rm(file);
   }
-  const asFiles = await glob("./examples/**.**");
+  const asFiles = await glob("./examples/**.as");
   for (const file of asFiles) {
     const fileWithoutExt = file.substring(0, file.length - 3);
     runAssembler(fileWithoutExt);

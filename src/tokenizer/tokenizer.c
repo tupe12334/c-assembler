@@ -24,6 +24,6 @@ TokenizedLine *tokenize(char *line, MetaAssembler meta_assembler) {
   tokenized_line->label = parse_label(line, &line_cursor);
   tokenized_line->type = parse_operation(line, &line_cursor);
   tokenized_line->value = get_value(line, &line_cursor);
-  tokenized_line->line = trim_last_char(line);
+  tokenized_line->line = rtrim(line);
   return tokenized_line;
 }
