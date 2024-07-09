@@ -7,7 +7,9 @@ export function runAssembler(fileName: string) {
     testingFolder,
     fileName
   )}`;
-
+  console.log("====================================");
+  console.log("Running command: ", command);
+  console.log("====================================");
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error: ${error.message}`);
