@@ -1,7 +1,6 @@
 #include "../include/constants.h"
 #include "../include/dictionary.h"
 #include "../include/line.h"
-#include "../include/operators_utils.h"
 #include "../include/parser.h"
 #include "../include/tokenizer.h"
 #include <stdio.h>

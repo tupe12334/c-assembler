@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     File_Meta file_meta;
     MetaAssembler meta_assembler;
 
-    char *full_file_name = parse_file_name(file_name);
+    char *full_file_name = append_assembly_extension(file_name);
     validate_file_access(full_file_name);
 
     file = fetch_file(full_file_name);

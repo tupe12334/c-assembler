@@ -5,7 +5,7 @@
 
 #define ASSEMBLY_FILE_EXTENSION ".as"
 
-char *parse_file_name(const char *file_name) {
+char *append_assembly_extension(const char *file_name) {
   const unsigned short int file_name_length = strlen(file_name);
   const unsigned short int full_file_name_length =
       file_name_length + strlen(ASSEMBLY_FILE_EXTENSION) + 1;

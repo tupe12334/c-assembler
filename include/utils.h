@@ -2,7 +2,7 @@
 #define TRUE 1
 #define FALSE 0
 
-char *parse_file_name(const char *file_name);
+char *append_assembly_extension(const char *file_name);
 
 void skip_white_spaces(char *line, int *line_cursor);
 
