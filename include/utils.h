@@ -1,6 +1,4 @@
 #pragma once
-#define TRUE 1
-#define FALSE 0
 
 char *append_assembly_extension(const char *file_name);
 

@@ -7,6 +7,7 @@
 #include "../../include/tokenizer.h"
 #include "../../include/types.h"
 #include "../../include/utils.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -74,7 +75,7 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
       continue;
     }
 
-    if (is_known_operator(tokenize_line->type, meta_assembler) == FALSE) {
+    if (is_known_operator(tokenize_line->type, meta_assembler) == false) {
       char *macr_value = lookup(dictionary, tokenize_line->type);
       if (macr_value != NULL) {
         printf("Found a macr use in line %lu\n", LC);

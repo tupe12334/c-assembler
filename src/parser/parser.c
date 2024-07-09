@@ -6,6 +6,7 @@
 #include "../../include/parse_line_type.h"
 #include "../../include/parse_operation.h"
 #include "../../include/utils.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,7 +23,7 @@ ParsedLine *parse_line(TokenizedLine tokenized_line,
   parsed_line->line_type =
       command_to_line_type(parsed_line->tokens.type, meta_assembler);
 
-  if (is_instruction(meta_assembler, parsed_line->tokens.type) == FALSE) {
+  if (is_instruction(meta_assembler, parsed_line->tokens.type) == false) {
     parsed_line->operators_amount =
         get_operators_amount(parsed_line->tokens.type, meta_assembler);
   }

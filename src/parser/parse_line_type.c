@@ -3,6 +3,7 @@
 #include "../../include/line.h"
 #include "../../include/meta_assembler.h"
 #include "../../include/op_codes.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,7 +16,7 @@ enum LineType command_to_line_type(char *command,
   }
 
   if (command[0] == '.') {
-    if (is_instruction(meta_assembler, command) == TRUE) {
+    if (is_instruction(meta_assembler, command) == true) {
       return INSTRUCTION;
     }
   }
