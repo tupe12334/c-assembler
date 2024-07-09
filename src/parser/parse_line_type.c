@@ -2,6 +2,7 @@
 #include "../../include/is_instruction.h"
 #include "../../include/line.h"
 #include "../../include/meta_assembler.h"
+#include "../../include/op_codes.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,8 +20,8 @@ enum LineType command_to_line_type(char *command,
     }
   }
 
-  for (i = 0; i < OP_CODES_LENGTH; i++) {
-    if (strcmp(command, meta_assembler.op_codes[i].name) == 0) {
+  for (i = 0; i < get_op_codes_length(); i++) {
+    if (strcmp(command, get_op_codes()[i]) == 0) {
       return OPERATION;
     }
   }

@@ -1,8 +1,9 @@
-
 #include "../../include/constants.h"
 #include "../../include/is_instruction.h"
 #include "../../include/meta_assembler.h"
+#include "../../include/op_codes.h"
 #include "../../include/utils.h"
+#include <stdio.h>
 #include <string.h>
 
 /**
@@ -11,15 +12,16 @@ array and compare if the operator is known.
 */
 unsigned short int is_known_operator(char command[],
                                      MetaAssembler meta_assembler) {
-
   int i;
+  int op_code_length = get_op_codes_length();
 
   if (is_instruction(meta_assembler, command) == TRUE) {
     return TRUE;
   }
 
-  for (i = 0; i < OP_CODES_LENGTH; i++) {
-    if (strcmp(command, meta_assembler.op_codes[i].name) == 0) {
+  for (i = 0; i < op_code_length; i++) {
+    char *op_code = get_op_codes()[i];
+    if (strcmp(command, op_code) == 0) {
       return TRUE;
     }
   }

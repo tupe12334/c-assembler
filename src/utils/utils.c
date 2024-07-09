@@ -34,3 +34,11 @@ char *trim_last_char(char *string) {
 int safe_strlen(const char *string) {
   return string != NULL ? strlen(string) : 0;
 }
+
+int array_length(char **array) {
+  int i = 0;
+  while (array[i] != NULL) {
+    i++;
+  }
+  return i;
+}

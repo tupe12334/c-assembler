@@ -14,5 +14,7 @@ typedef struct {
   char *filename;
 } File_Meta;
 
+int array_length(char **array);
+
 unsigned short int is_comment(char *line);
 unsigned short int is_line_empty(char *line);

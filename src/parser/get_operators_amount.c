@@ -1,6 +1,7 @@
 #include "../../include/assembler.h"
 #include "../../include/constants.h"
 #include "../../include/line.h"
+#include "../../include/op_codes.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,8 +11,8 @@ enum Operators_amount get_operators_amount(char *command,
 
   unsigned short int i;
   int op_code_index;
-  for (i = 0; i < OP_CODES_LENGTH; i++) {
-    if (strcmp(command, meta_assembler.op_codes[i].name) == 0) {
+  for (i = 0; i < get_op_codes_length(); i++) {
+    if (strcmp(command, get_op_codes()[i]) == 0) {
       op_code_index = i;
     }
   }
