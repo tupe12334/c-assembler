@@ -1,6 +1,5 @@
 #include "../../include/constants.h"
 #include "../../include/dictionary.h"
-#include "../../include/dynamic_string.h"
 #include "../../include/file_utils.h"
 #include "../../include/is_known_operator.h"
 #include "../../include/macro_utils.h"
