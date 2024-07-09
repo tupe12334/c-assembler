@@ -7,23 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int from_opcode_to_number(char *opcode) {
-  // get the index of the opcode in the array
-  const int op_codes_length = get_op_codes_length();
-  int opcode_number;
-  int i;
-  for (i = 0; i < op_codes_length; i++) {
-    const char *op_code = get_op_codes()[i];
-    if (strcmp(opcode, op_code) == 0) {
-      opcode_number = i;
-      break;
-    }
-  }
-  return opcode_number;
-}
-
-void create_operator_line(DynamicArray *program, OperatorLine *operator_line) {}
-
 void handle_operation(DynamicArray *program, ParsedLine *parsed_line) {
   OperatorLine *operator_line;
   printf("Start to handle operation type %s\n", parsed_line->tokens.type);
@@ -39,5 +22,4 @@ void handle_operation(DynamicArray *program, ParsedLine *parsed_line) {
     exit(5);
     break;
   }
-  from_opcode_to_number(parsed_line->tokens.type);
 }
