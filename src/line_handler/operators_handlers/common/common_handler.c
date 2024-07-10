@@ -8,10 +8,8 @@ int common_handler(DynamicArray *program, OperatorLine *operator_line) {
   int instruction_binary_code = 4;
   binary_code += instruction_binary_code;
 
-  unsigned short op_code = operator_line->opcode;
-  int op_code_binary_section = op_code << 11;
+  int op_code_binary_section = operator_line->opcode << 11;
   binary_code += op_code_binary_section;
-
   if (operator_line != NULL && operator_line->operand_dst != NULL &&
       operator_line->operand_dst->address_type != NULL) {
     int dst_address_binary_section = operator_line->operand_dst->address_type
@@ -24,5 +22,5 @@ int common_handler(DynamicArray *program, OperatorLine *operator_line) {
                                      << 7;
     binary_code += src_address_binary_section;
   }
-  return instruction_binary_code;
+  return binary_code;
 }
