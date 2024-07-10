@@ -4,3 +4,4 @@
 #define COMMENT_LINE_BREAK                                                     \
   "************************************************************"
 #define IC_STARTING_NUMBER 100
+enum OperandSide { SRC, DST };

@@ -1,1 +1,1 @@
-                prn     #48
+MAIN:   add     r3, LIST

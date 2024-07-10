@@ -5,7 +5,7 @@
 
 int common_handler(DynamicArray *program, OperatorLine *operator_line) {
   int binary_code = 0;
-  int instruction_binary_code = 4;
+  int instruction_binary_code = ABSOLUTE;
   binary_code += instruction_binary_code;
 
   int op_code_binary_section = operator_line->opcode << 11;
@@ -22,5 +22,6 @@ int common_handler(DynamicArray *program, OperatorLine *operator_line) {
                                      << 7;
     binary_code += src_address_binary_section;
   }
+
   return binary_code;
 }

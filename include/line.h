@@ -29,7 +29,6 @@ enum AddressType {
 typedef struct {
   char *value;
   enum AddressType address_type;
-  enum AddressMethod address_method;
 } Operand;
 
 typedef struct {

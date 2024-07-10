@@ -1,3 +1,4 @@
+#include "../../include/constants.h"
 #include "../../include/line.h"
 #include "../../include/regex.h"
 #include "../../include/utils.h"
@@ -5,8 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-enum OperandSide { SRC, DST };
 
 #define OPERAND_REGEX "^([^,\\s]+)"
 #define SEC_OPERAND_REGEX ",(.*)"

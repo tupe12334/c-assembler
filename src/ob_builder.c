@@ -6,15 +6,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *build_line(int index, int value) {
+char *format_index(int index) {
   int display_index = index + IC_STARTING_NUMBER;
   char *index_str;
   sprintf(index_str, "%d", display_index);
   if (display_index < 1000) {
     index_str = str_append("0", index_str);
   }
-  return str_append(
-      "\n", str_append((index_str), str_append(" ", decimal_to_octal(value))));
+  return index_str;
+}
+
+char *format_value(int value) {
+  char *value_str = decimal_to_octal(value);
+  int i = 0;
+  while (value_str[i] > 5) {
+    i++;
+  }
+  // printf("Amount of valid digits: %d\n", i);
+  for (i; i < 5; i++) {
+    value_str = str_append("0", value_str);
+  }
+  return value_str;
+}
+char *build_line(int index, int value) {
+  char *line =
+      str_append((format_index(index)), str_append(" ", format_value(value)));
+  puts(line);
+  return line;
 }
 
 void ob_builder(DynamicArray *program, char *filename) {
@@ -30,8 +48,9 @@ void ob_builder(DynamicArray *program, char *filename) {
   char *file_title =
       str_append(str_append(str_instruction_length, " "), str_data_length);
   write_file(object_filename, file_title);
-
+  append_to_file(object_filename, "");
   for (int i = 0; i < program->size; i++) {
+    printf("Index: [%d]\n", i);
     int value = program->data[i];
     append_to_file(object_filename, build_line(i, value));
   }
