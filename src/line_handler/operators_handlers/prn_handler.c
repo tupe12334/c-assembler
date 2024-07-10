@@ -2,6 +2,7 @@
 #include "../../../include/line.h"
 #include "../../../include/operator_validators.h"
 #include "../../../include/operators_handlers.h"
+#include <stdbool.h>
 #include <stdio.h>
 
 void valid_prn_operands(OperatorLine *operator_line) {
@@ -30,5 +31,5 @@ void prn_operator_handler(DynamicArray *program, OperatorLine *operator_line) {
     binary_code += src_address_binary_section;
   }
 
-  darray_append(program, binary_code);
+  darray_append(program, binary_code, false);
 }
