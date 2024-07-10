@@ -15,8 +15,6 @@ void valid_prn_operands(OperatorLine *operator_line) {
 void prn_operator_handler(DynamicArray *program, OperatorLine *operator_line) {
   valid_prn_operands(operator_line);
   int binary_code = common_handler(program, operator_line);
-  unsigned short op_code = operator_line->opcode;
-  int op_code_binary_section = op_code << 11;
 
   darray_append(program, binary_code, false);
 }
