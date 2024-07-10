@@ -1,5 +1,5 @@
-#include "../../../include/line.h"
-#include "../../../include/operator_validators.h"
+#include "../../../../include/line.h"
+#include "../../../../include/operator_validators.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
