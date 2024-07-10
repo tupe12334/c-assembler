@@ -4,6 +4,7 @@
 #include "../../include/is_known_operator.h"
 #include "../../include/macro_utils.h"
 #include "../../include/meta_assembler.h"
+#include "../../include/string.h"
 #include "../../include/tokenizer.h"
 #include "../../include/types.h"
 #include "../../include/utils.h"
@@ -53,7 +54,7 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
   /* Line counter */
   LC = 0;
 
-  am_filename = append_file_ext(filename, ".am");
+  am_filename = str_append(filename, ".am");
   reset_file(am_filename);
 
   while (fgets(line, sizeof(line), assembly_file)) {

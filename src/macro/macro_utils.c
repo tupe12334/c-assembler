@@ -1,6 +1,7 @@
 #include "../../include/constants.h"
 #include "../../include/file_utils.h"
 #include "../../include/line.h"
+#include "../../include/string.h"
 #include "../../include/types.h"
 #include <ctype.h>
 #include <stdio.h>
@@ -30,14 +31,6 @@ unsigned short int is_line_empty(char *line) {
   return 1;
 }
 
-char *append_file_ext(char *filename, char *extention) {
-  char *new_filename =
-      (char *)malloc((strlen(filename) + strlen(extention) + 1) * sizeof(char));
-  strcpy(new_filename, filename);
-  strcat(new_filename, extention);
-  return new_filename;
-}
-
 FILE *fetch_postmacro_file(char *filename) {
-  return fetch_file(append_file_ext(filename, ".am"));
+  return fetch_file(str_append(filename, ".am"));
 }
