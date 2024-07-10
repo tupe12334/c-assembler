@@ -1,2 +1,1 @@
-MAIN:   add     r3, LIST
-        jsr     fn1
+                prn     #48

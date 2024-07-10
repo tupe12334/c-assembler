@@ -1,67 +1,35 @@
-#include "../../include/daynamic_array.h"
+#include "../../include/dynamic_array.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-DynamicArray *createDynamicArray(size_t initialCapacity) {
-  DynamicArray *arr = (DynamicArray *)malloc(sizeof(DynamicArray));
-  if (arr == NULL) {
-    return NULL;
-  }
-
-  arr->array = (int *)malloc(initialCapacity * sizeof(int));
-  if (arr->array == NULL) {
-    free(arr);
-    return NULL;
-  }
-
-  arr->size = 0;
-  arr->capacity = initialCapacity;
-  return arr;
+// Function to initialize the dynamic list
+void darray_init(DynamicArray *list, size_t initialCapacity) {
+  list->data = (int *)malloc(initialCapacity * sizeof(int));
+  list->size = 0;
+  list->capacity = initialCapacity;
 }
 
-void freeDynamicArray(DynamicArray *arr) {
-  if (arr) {
-    free(arr->array);
-    free(arr);
+// Function to append an element to the dynamic list
+void darray_append(DynamicArray *list, int value) {
+  if (list->size == list->capacity) {
+    // Double the capacity if the list is full
+    list->capacity *= 2;
+    list->data = (int *)realloc(list->data, list->capacity * sizeof(int));
   }
+  list->data[list->size++] = value;
 }
 
-int resize(DynamicArray *arr) {
-  size_t newCapacity = arr->capacity * 2;
-  int *newArray = (int *)realloc(arr->array, newCapacity * sizeof(int));
-  if (newArray == NULL) {
-    return 0; // Resize failed
-  }
-
-  arr->array = newArray;
-  arr->capacity = newCapacity;
-  return 1; // Resize successful
+// Function to free the memory allocated for the dynamic list
+void darray_free(DynamicArray *list) {
+  free(list->data);
+  list->data = NULL;
+  list->size = 0;
+  list->capacity = 0;
 }
 
-int array_insert(DynamicArray *arr, int element) {
-  if (arr->size == arr->capacity) {
-    if (!resize(arr)) {
-      return 0; // Insert failed
-    }
+// Function to print the dynamic list
+void darray_print(DynamicArray *list) {
+  for (size_t i = 0; i < list->size; i++) {
+    printf("[%zu]: %d\n", i, list->data[i]);
   }
-
-  arr->array[arr->size++] = element;
-  return 1; // Insert successful
-}
-
-int get(DynamicArray *arr, size_t index, int *element) {
-  if (index >= arr->size) {
-    return 0; // Invalid index
-  }
-
-  *element = arr->array[index];
-  return 1; // Get successful
-}
-
-void printArray(DynamicArray *arr) {
-  printf("Array (size=%zu, capacity=%zu): ", arr->size, arr->capacity);
-  for (size_t i = 0; i < arr->size; i++) {
-    printf("%d ", arr->array[i]);
-  }
-  printf("\n");
 }
