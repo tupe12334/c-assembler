@@ -25,7 +25,7 @@ void handle_operation(DynamicArray *program, ParsedLine *parsed_line) {
   default:
     printf("Error in handle_operation: unknown operation type %s\n",
            parsed_line->tokens.type);
-    exit(5);
+    exit(EXIT_FAILURE);
     break;
   }
 }

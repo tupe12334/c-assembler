@@ -29,8 +29,9 @@ char *format_value(int value) {
   return value_str;
 }
 char *build_line(int index, int value) {
-  char *line =
-      str_append((format_index(index)), str_append(" ", format_value(value)));
+  char *formatted_index = format_index(index);
+  char *formatted_value = format_value(value);
+  char *line = str_append(formatted_index, str_append(" ", formatted_value));
   puts(line);
   return line;
 }
@@ -50,8 +51,8 @@ void ob_builder(DynamicArray *program, char *filename) {
   write_file(object_filename, file_title);
   append_to_file(object_filename, "");
   for (int i = 0; i < program->size; i++) {
-    printf("Index: [%d]\n", i);
     int value = program->data[i];
-    append_to_file(object_filename, build_line(i, value));
+    char *line = build_line(i, value);
+    append_to_file(object_filename, line);
   }
 }
