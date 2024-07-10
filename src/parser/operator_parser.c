@@ -12,28 +12,29 @@ enum OperandSide { SRC, DST };
 #define SEC_OPERAND_REGEX ",(.*)"
 
 enum AddressType get_address_type(char *operand) {
-  if (operand[0] == '#') {
+  char first_char = operand[0];
+  switch (first_char) {
+  case '#':
     return NUMBER;
-  }
-  if (operand[0] == "*") {
+  case '*':
     return REGISTER_VALUE;
-  }
-  if (operand[0] == "r") {
+  case 'r':
     return REGISTER_ADDRESS;
+  default:
+    return LABEL;
   }
-  return LABEL;
 }
 
 Operand *build_operand(OperatorLine *operator_line, enum OperandSide side) {
   char *value;
   switch (side) {
   case SRC:
-    value = extract_word(operator_line->parsed_line->tokens.value,
-                         SEC_OPERAND_REGEX);
-    break;
-  case DST:
     value =
         extract_word(operator_line->parsed_line->tokens.value, OPERAND_REGEX);
+    break;
+  case DST:
+    value = extract_word(operator_line->parsed_line->tokens.value,
+                         SEC_OPERAND_REGEX);
     break;
   }
   if (value == NULL) {
