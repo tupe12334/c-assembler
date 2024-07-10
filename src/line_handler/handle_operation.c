@@ -1,6 +1,7 @@
 #include "../../include/line_handler.h"
 #include "../../include/op_codes.h"
 #include "../../include/operator_parser.h"
+#include "../../include/operator_validators.h"
 #include "../../include/operators_handlers.h"
 #include <stdio.h>
 #include <stdlib.h>
