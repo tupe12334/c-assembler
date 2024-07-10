@@ -1,36 +1,66 @@
 #include "../../include/line.h"
 #include "../../include/regex.h"
 #include "../../include/utils.h"
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+enum OperandSide { SRC, DST };
+
 #define OPERAND_REGEX "^([^,\\s]+)"
+#define SEC_OPERAND_REGEX ",(.*)"
 
-char *get_first_operand(char *value) {
-  char *first_operand = extract_word(value, OPERAND_REGEX);
-  return first_operand;
+enum AddressType get_address_type(char *operand) {
+  if (operand[0] == '#') {
+    return NUMBER;
+  }
+  if (operand[0] == "*") {
+    return REGISTER_VALUE;
+  }
+  if (operand[0] == "r") {
+    return REGISTER_ADDRESS;
+  }
+  return LABEL;
 }
-char *get_second_operand(char *operand_a, char *value) {
-  int operand_a_length = safe_strlen(operand_a) + 1;
-  int length = safe_strlen(value) - operand_a_length;
-  char *substring = malloc(length);
 
-  if (is_line_empty(value + operand_a_length)) {
-    puts("No second operand");
+Operand *build_operand(OperatorLine *operator_line, enum OperandSide side) {
+  char *value;
+  switch (side) {
+  case SRC:
+    value = extract_word(operator_line->parsed_line->tokens.value,
+                         SEC_OPERAND_REGEX);
+    break;
+  case DST:
+    value =
+        extract_word(operator_line->parsed_line->tokens.value, OPERAND_REGEX);
+    break;
+  }
+  if (value == NULL) {
     return NULL;
   }
-  strncpy(substring, ltrim(value + operand_a_length), length);
-  char *second_operand = extract_word(substring, OPERAND_REGEX);
-  return second_operand;
+  Operand *operand = malloc(sizeof(Operand));
+  operand->value = value;
+  operand->address_type = get_address_type(operand->value);
+  return operand;
+}
+
+void print_operator(OperatorLine *operator_line) {
+  printf("Operator: (%s)", operator_line->parsed_line->tokens.type);
+  printf(" DST: (%s)", operator_line->operand_dst->value);
+  if (operator_line->operand_src != NULL) {
+    printf(" SRC: (%s)", operator_line->operand_src->value);
+  }
+  printf("\n");
 }
 
 OperatorLine *parse_operator_line(ParsedLine *parsed_line) {
   OperatorLine *operator_line = malloc(sizeof(OperatorLine));
   operator_line->parsed_line = parsed_line;
-  operator_line->operand_a = get_first_operand(parsed_line->tokens.value);
-  operator_line->operand_b =
-      get_second_operand(operator_line->operand_a, parsed_line->tokens.value);
+  operator_line->operand_dst = build_operand(operator_line, DST);
+  operator_line->operand_src = build_operand(operator_line, SRC);
+
   operator_line->opcode = get_operator_index(parsed_line->tokens.type);
+  print_operator(operator_line);
   return operator_line;
 }

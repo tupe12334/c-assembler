@@ -20,4 +20,5 @@ void assemble(FILE *assembly_file, File_Meta file_meta,
   puts("Fetched file post macro");
   meta_assembler.pase = FIRST_RUN;
   first_pass_handler(program, post_macro_file, meta_assembler);
+  darray_print(program);
 }
