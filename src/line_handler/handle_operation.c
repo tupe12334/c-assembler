@@ -28,4 +28,6 @@ void handle_operation(DynamicArray *program, ParsedLine *parsed_line) {
     exit(EXIT_FAILURE);
     break;
   }
+
+  handle_operands(program, operator_line);
 }
