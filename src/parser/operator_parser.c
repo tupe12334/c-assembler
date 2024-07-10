@@ -8,7 +8,7 @@
 #include <string.h>
 
 #define OPERAND_REGEX "^([^,\\s]+)"
-#define SEC_OPERAND_REGEX ",(.*)"
+#define SEC_OPERAND_REGEX "([^,\n\t \r]+)$"
 
 enum AddressType get_address_type(char *operand) {
   char first_char = operand[0];
