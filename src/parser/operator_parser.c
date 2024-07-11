@@ -1,6 +1,7 @@
 #include "../../include/constants.h"
 #include "../../include/line.h"
 #include "../../include/regex.h"
+#include "../../include/string.h"
 #include "../../include/utils.h"
 #include <stddef.h>
 #include <stdio.h>
@@ -25,15 +26,18 @@ enum AddressType get_address_type(char *operand) {
 }
 
 Operand *build_operand(OperatorLine *operator_line, enum OperandSide side) {
+  char *line = operator_line->parsed_line->tokens.value;
   char *value;
+  if (!has_comma(line) && side == SRC) {
+    return NULL;
+  }
+
   switch (side) {
   case SRC:
-    value =
-        extract_word(operator_line->parsed_line->tokens.value, OPERAND_REGEX);
+    value = extract_word(line, OPERAND_REGEX);
     break;
   case DST:
-    value = extract_word(operator_line->parsed_line->tokens.value,
-                         SEC_OPERAND_REGEX);
+    value = extract_word(line, SEC_OPERAND_REGEX);
     break;
   }
   if (value == NULL) {

@@ -8,3 +8,5 @@ char *str_append(char *string_a, char *string_b) {
   strcat(new_str, string_b);
   return new_str;
 }
+
+int has_comma(const char *str) { return strchr(str, ',') != NULL; }
