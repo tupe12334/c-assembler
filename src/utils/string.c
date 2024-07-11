@@ -10,3 +10,15 @@ char *str_append(char *string_a, char *string_b) {
 }
 
 int has_comma(const char *str) { return strchr(str, ',') != NULL; }
+
+char *ltrim_x_chars(char *str, int x) {
+  if (str == NULL || x <= 0)
+    return str;
+
+  size_t len = strlen(str);
+  if ((size_t)x >= len)
+    return str;
+
+  memmove(str, str + x, len - x + 1);
+  return str;
+}

@@ -11,10 +11,10 @@ int handle_operand(Operand *operand, enum OperandSide side) {
   }
   int binary_code = 0;
   switch (operand->address_type) {
-    // case:
-    //   NUMBER
-    //   darray_append(program, atoi(operator_line->operand_dst->value), false);
-    //   break;
+  case NUMBER:
+    binary_code += ABSOLUTE;
+    binary_code += handle_number_operand(operand, side);
+    break;
     // case LABEL:
     //   binary_code += RELOCATABLE;
     //   binary_code += handle_label_operand(operand, side);
@@ -30,7 +30,6 @@ int handle_operand(Operand *operand, enum OperandSide side) {
 }
 
 void handle_operands(DynamicArray *program, OperatorLine *operator_line) {
-
   if (operator_line->operand_src != NULL) {
     int binary_code = handle_operand(operator_line->operand_src, SRC);
     darray_append(program, binary_code, false);
