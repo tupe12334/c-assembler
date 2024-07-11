@@ -9,6 +9,6 @@ void handle_operands(DynamicArray *program, OperatorLine *operator_line);
 int handler_register_operand(Operand *operand, enum OperandSide side);
 int handle_label_operand(Operand *operand, enum OperandSide side);
 #pragma endregion
-void add_operator_handler(DynamicArray *program, OperatorLine *operator_line);
-void prn_operator_handler(DynamicArray *program, OperatorLine *operator_line);
-void jsr_operator_handler(DynamicArray *program, OperatorLine *operator_line);
+void valid_jsr_operands(OperatorLine *operator_line);
+void valid_add_operands(OperatorLine *operator_line);
+void valid_prn_operands(OperatorLine *operator_line);
