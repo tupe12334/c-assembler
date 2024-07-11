@@ -19,3 +19,9 @@ void valid_prn_operands(OperatorLine *operator_line) {
   validate_operands(operator_line, valid_src_address_codes,
                     valid_dst_address_codes);
 };
+void valid_lea_operands(OperatorLine *operator_line) {
+  unsigned short int valid_src_address_codes[] = {1};
+  unsigned short int valid_dst_address_codes[] = {1, 2, 3};
+  validate_operands(operator_line, valid_src_address_codes,
+                    valid_dst_address_codes);
+};

@@ -12,6 +12,9 @@ void validate_operator(OperatorLine *operator_line) {
   case 2:
     valid_add_operands(operator_line);
     break;
+  case 4:
+    valid_lea_operands(operator_line);
+    break;
   case 12:
     valid_prn_operands(operator_line);
     break;
