@@ -19,15 +19,18 @@ void handle_operation(DynamicArray *program, ParsedLine *parsed_line) {
   case 12:
     prn_operator_handler(program, operator_line);
     break;
-  // case 13:
-  //   jsr_operator_handler(program, operator_line);
-  //   break;
+  case 13:
+    jsr_operator_handler(program, operator_line);
+    break;
   default:
     printf("Error in handle_operation: unknown operation type %s\n",
            parsed_line->tokens.type);
     exit(EXIT_FAILURE);
     break;
   }
+
+  int binary_code = common_handler(program, operator_line);
+  darray_append(program, binary_code, false);
 
   handle_operands(program, operator_line);
 }
