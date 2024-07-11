@@ -15,8 +15,9 @@ int handle_operand(Operand *operand, enum OperandSide side) {
     //   NUMBER
     //   darray_append(program, atoi(operator_line->operand_dst->value), false);
     //   break;
-  case LABEL:
-    puts("sdafdsakjfkl");
+    // case LABEL:
+    //   binary_code += RELOCATABLE;
+    //   binary_code += handle_label_operand(operand, side);
     break;
   case REGISTER_VALUE:
   case REGISTER_ADDRESS:
@@ -32,7 +33,6 @@ void handle_operands(DynamicArray *program, OperatorLine *operator_line) {
 
   if (operator_line->operand_src != NULL) {
     int binary_code = handle_operand(operator_line->operand_src, SRC);
-    printf("Binary code: %d\n", binary_code);
     darray_append(program, binary_code, false);
   }
   if (operator_line->operand_dst != NULL) {
