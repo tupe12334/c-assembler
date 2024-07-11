@@ -9,17 +9,53 @@
 
 void validate_operator(OperatorLine *operator_line) {
   switch (operator_line->opcode) {
+  case 0:
+    valid_mov_operands(operator_line);
+    break;
+  case 1:
+    valid_cmp_operands(operator_line);
+    break;
   case 2:
     valid_add_operands(operator_line);
     break;
+  case 3:
+    valid_sub_operands(operator_line);
+    break;
   case 4:
     valid_lea_operands(operator_line);
+    break;
+  case 5:
+    valid_clr_operands(operator_line);
+    break;
+  case 6:
+    valid_not_operands(operator_line);
+    break;
+  case 7:
+    valid_inc_operands(operator_line);
+    break;
+  case 8:
+    valid_dec_operands(operator_line);
+    break;
+  case 9:
+    valid_jmp_operands(operator_line);
+    break;
+  case 10:
+    valid_bne_operands(operator_line);
+    break;
+  case 11:
+    valid_red_operands(operator_line);
     break;
   case 12:
     valid_prn_operands(operator_line);
     break;
   case 13:
     valid_jsr_operands(operator_line);
+    break;
+  case 14:
+    valid_rts_operands(operator_line);
+    break;
+  case 15:
+    valid_stop_operands(operator_line);
     break;
   default:
     printf("Error in handle_operation: unknown operation type %s\n",
