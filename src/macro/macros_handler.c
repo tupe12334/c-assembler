@@ -75,7 +75,6 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
       handle_recording(&macro_recording, tokenize_line, dictionary, LC);
       continue;
     }
-
     if (is_known_operator(tokenize_line->type, meta_assembler) == false) {
       char *macr_value = lookup(dictionary, tokenize_line->type);
       if (macr_value != NULL) {
@@ -83,7 +82,7 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
         append_to_file(am_filename, macr_value);
         continue;
       }
-      printf("Unknown operator in line %lu\n", LC);
+      printf("Unknown operator in line %lu, line content: %s\n", LC, line);
       exit(EXIT_FAILURE);
     }
     append_to_file(am_filename, tokenize_line->line);

@@ -9,12 +9,14 @@
 
 TokenizedLine *tokenize(char *line, MetaAssembler meta_assembler) {
   int line_cursor = 0;
+
   TokenizedLine *tokenized_line = malloc(sizeof(TokenizedLine));
   if (tokenized_line == NULL) {
     printf("Failed to allocate memory for parsed_line\n");
     exit(EXIT_FAILURE);
   }
 
+  skip_white_spaces(line, &line_cursor);
   if (is_comment(line)) {
     printf("Comment line\n");
     free(tokenized_line);
