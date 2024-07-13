@@ -15,7 +15,7 @@ ParsedLine *parse_line(TokenizedLine tokenized_line,
   int line_cursor = 0;
   ParsedLine *parsed_line = malloc(sizeof(ParsedLine));
   if (parsed_line == NULL) {
-    printf("Failed to allocate memory for parsed_line\n");
+    fprintf(stderr, "Failed to allocate memory for parsed_line\n");
     exit(EXIT_FAILURE);
   }
   parsed_line->tokens = tokenized_line;

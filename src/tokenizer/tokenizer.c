@@ -12,7 +12,7 @@ TokenizedLine *tokenize(char *line, MetaAssembler meta_assembler) {
 
   TokenizedLine *tokenized_line = malloc(sizeof(TokenizedLine));
   if (tokenized_line == NULL) {
-    printf("Failed to allocate memory for parsed_line\n");
+    fprintf(stderr, "Failed to allocate memory for parsed_line\n");
     exit(EXIT_FAILURE);
   }
 

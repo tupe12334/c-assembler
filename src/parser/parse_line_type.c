@@ -31,6 +31,6 @@ enum LineType command_to_line_type(char *command,
     return MACRO;
   }
 
-  printf("Unknown command: %s\n", command);
+  fprintf(stderr, "Unknown command: %s\n", command);
   exit(EXIT_FAILURE);
 }

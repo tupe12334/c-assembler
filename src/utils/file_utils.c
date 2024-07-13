@@ -7,7 +7,7 @@ FILE *fetch_file(char *full_file_name) {
   file = fopen(full_file_name, "r");
 
   if (file == NULL) {
-    printf("File %s does not exist\n", full_file_name);
+    fprintf(stderr, "File %s does not exist\n", full_file_name);
     exit(EXIT_FAILURE);
   }
 
@@ -19,7 +19,7 @@ void write_file(char *filename, char *content) {
   file = fopen(filename, "w");
 
   if (file == NULL) {
-    printf("File %s does not exist\n", filename);
+    fprintf(stderr, "File %s does not exist\n", filename);
     exit(EXIT_FAILURE);
   }
 
@@ -34,7 +34,7 @@ void append_to_file(char *filename, char *content) {
   file = fopen(filename, "a");
 
   if (file == NULL) {
-    printf("File %s does not exist\n", filename);
+    fprintf(stderr, "File %s does not exist\n", filename);
     exit(EXIT_FAILURE);
   }
 
