@@ -9,10 +9,11 @@ void line_handler(DynamicArray *program, ParsedLine *parsed_line) {
     //   case INSTRUCTION:
     //     handle_instruction(parsed_line);
     //     break;
-  case MACRO:
   case EMPTY:
+    break;
+  case MACRO:
   default:
-    // TODO throw error
+    fprintf(stderr, "Unknown line type: %d\n", parsed_line->line_type);
     break;
   }
 }
