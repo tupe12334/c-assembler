@@ -2,8 +2,6 @@
 
 enum LineType { EMPTY, OPERATION, INSTRUCTION, MACRO };
 
-enum Operators_amount { NONE, ONE, TWO };
-
 typedef struct {
   char *label;
   char *type;
@@ -14,7 +12,6 @@ typedef struct {
 typedef struct {
   TokenizedLine tokens;
   enum LineType line_type;
-  enum Operators_amount operators_amount;
 } ParsedLine;
 
 enum AddressMethod { ABSOLUTE = 4, RELOCATABLE = 2, EXTERNAL = 1 };
