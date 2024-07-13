@@ -11,8 +11,8 @@ LOOP:   prn     #48
         clr     K
         sub     L3,L3
         jmp     LOOP
-        END:    stop
-        STR:    .string "abcd"
-        LIST:   .data 6, -9
-                .data   -100
-        K:      .data 31
+END:    stop
+STR:    .string "abcd"
+LIST:   .data 6, -9
+        .data   -100
+K:      .data 31
