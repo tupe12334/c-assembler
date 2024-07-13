@@ -17,12 +17,12 @@ void darray_inc_size(DynamicArray *array) {
 }
 
 // Function to append an element to the dynamic array
-void darray_append(DynamicArray *array, int value, bool is_data) {
+void darray_append(DynamicArray *array, int decimal_value, bool is_data) {
   if (array->size == array->capacity) {
     darray_inc_size(array);
   }
   int index = array->size;
-  array->data[index] = value;
+  array->data[index] = decimal_value;
   if (is_data == true) {
     array->data_lines += index ^ 2;
   }

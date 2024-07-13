@@ -32,7 +32,6 @@ char *build_line(int index, int value) {
   char *formatted_index = format_index(index);
   char *formatted_value = format_value(value);
   char *line = str_append(formatted_index, str_append(" ", formatted_value));
-  puts(line);
   return line;
 }
 

@@ -1,14 +1,14 @@
 #include "../../include/line_handler.h"
+#include <stdio.h>
 
 void line_handler(DynamicArray *program, ParsedLine *parsed_line) {
   switch (parsed_line->line_type) {
   case OPERATION:
     handle_operation(program, parsed_line);
     break;
-    // TODO
-    //   case INSTRUCTION:
-    //     handle_instruction(parsed_line);
-    //     break;
+  case INSTRUCTION:
+    handle_instructions(program, parsed_line);
+    break;
   case EMPTY:
     break;
   case MACRO:
