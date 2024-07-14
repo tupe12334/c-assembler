@@ -5,7 +5,7 @@
 
 // Function to initialize the dynamic array
 void darray_init(DynamicArray *array, size_t initialCapacity) {
-  array->data = (int *)malloc(initialCapacity * sizeof(int));
+  array->data = (array_data *)malloc(initialCapacity * sizeof(array_data));
   array->size = 0;
   array->capacity = initialCapacity;
 }
@@ -13,11 +13,13 @@ void darray_init(DynamicArray *array, size_t initialCapacity) {
 void darray_inc_size(DynamicArray *array) {
   // Double the capacity if the array is full
   array->capacity *= 2;
-  array->data = (int *)realloc(array->data, array->capacity * sizeof(int));
+  array->data =
+      (array_data *)realloc(array->data, array->capacity * sizeof(array_data));
 }
 
 // Function to append an element to the dynamic array
-void darray_append(DynamicArray *array, int decimal_value, bool is_data) {
+void darray_append(DynamicArray *array, array_data decimal_value,
+                   bool is_data) {
   if (array->size == array->capacity) {
     darray_inc_size(array);
   }
