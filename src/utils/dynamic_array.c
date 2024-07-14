@@ -23,9 +23,7 @@ void darray_append(DynamicArray *array, int decimal_value, bool is_data) {
   }
   int index = array->size;
   array->data[index] = decimal_value;
-  if (is_data == true) {
-    array->data_lines += index ^ 2;
-  }
+  is_data == true ? array->data_lines++ : array->code_lines++;
   array->size++;
 }
 
@@ -44,16 +42,6 @@ void darray_print(DynamicArray *array) {
   }
   printf("Data lines: %d\n", array->data_lines);
 }
-int darray_data_lines(DynamicArray *array) {
-  int bin_number = array->data_lines;
-  int count = 0;
-  while (bin_number) {
-    count += bin_number & 1;
-    bin_number >>= 1;
-  }
-  return count;
-}
+int darray_data_lines(DynamicArray *array) { return array->data_lines; }
 
-int darray_code_lines(DynamicArray *array) {
-  return array->size - darray_data_lines(array);
-}
+int darray_code_lines(DynamicArray *array) { return array->code_lines; }

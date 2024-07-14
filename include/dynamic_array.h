@@ -10,6 +10,7 @@ typedef struct {
   size_t size;
   size_t capacity;
   int data_lines;
+  int code_lines;
 } DynamicArray;
 
 void darray_init(DynamicArray *list, size_t initialCapacity);
