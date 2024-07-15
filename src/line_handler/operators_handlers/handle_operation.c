@@ -61,11 +61,12 @@ void validate_operator(OperatorLine *operator_line) {
 
 void handle_operation(DynamicArray *program, ParsedLine *parsed_line) {
   OperatorLine *operator_line;
+  int binary_code;
   operator_line = parse_operator_line(parsed_line);
 
   validate_operator(operator_line);
 
-  int binary_code = common_handler(program, operator_line);
+  binary_code = common_handler(program, operator_line);
   darray_append(program, binary_code, false);
 
   handle_operands(program, operator_line);

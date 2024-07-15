@@ -5,10 +5,11 @@
 
 int common_handler(DynamicArray *program, OperatorLine *operator_line) {
   int binary_code = 0;
+  int op_code_binary_section;
   int instruction_binary_code = ABSOLUTE;
   binary_code += instruction_binary_code;
 
-  int op_code_binary_section = operator_line->opcode << 11;
+  op_code_binary_section = operator_line->opcode << 11;
   binary_code += op_code_binary_section;
   if (operator_line != NULL && operator_line->operand_dst != NULL &&
       operator_line->operand_dst->address_type != NULL) {

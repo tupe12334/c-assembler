@@ -6,11 +6,11 @@
 #include <stdlib.h>
 
 int handle_operand(Operand *operand, enum OperandSide side) {
+  int binary_code = 0;
   if (operand == NULL) {
     fprintf(stderr, "Invalid operand\n");
     exit(EXIT_FAILURE);
   }
-  int binary_code = 0;
   switch (operand->address_type) {
   case NUMBER:
     binary_code += ABSOLUTE;
