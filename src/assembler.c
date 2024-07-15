@@ -23,5 +23,4 @@ void assemble(FILE *assembly_file, File_Meta file_meta,
   first_pass_handler(program, post_macro_file, meta_assembler);
 
   ob_builder(program, file_meta.filename);
-  // darray_print(program);
 }

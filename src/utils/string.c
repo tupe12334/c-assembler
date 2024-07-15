@@ -34,21 +34,18 @@ char *ltrim(char *s) {
 char *rtrim(const char *str) {
   int n = strlen(str);
 
-  // Find the position of the last non-whitespace character
   while (n > 0 && isspace((unsigned char)str[n - 1])) {
     n--;
   }
 
-  // Allocate memory for the new trimmed string
   char *trimmed = (char *)malloc(n + 1);
   if (trimmed == NULL) {
     fprintf(stderr, "Memory allocation failed\n");
     exit(EXIT_FAILURE);
   }
 
-  // Copy the trimmed portion of the string to the new string
   strncpy(trimmed, str, n);
-  trimmed[n] = '\0'; // Null-terminate the new string
+  trimmed[n] = '\0';
 
   return trimmed;
 }

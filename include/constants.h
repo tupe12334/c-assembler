@@ -4,3 +4,4 @@
   "************************************************************"
 #define IC_STARTING_NUMBER 100
 enum OperandSide { SRC, DST };
+#define ASSEMBLY_FILE_EXTENSION ".as"

@@ -1,7 +1,4 @@
 #pragma once
-
-char *append_assembly_extension(const char *file_name);
-
 void skip_white_spaces(char *line, int *line_cursor);
 
 int safe_strlen(const char *string);

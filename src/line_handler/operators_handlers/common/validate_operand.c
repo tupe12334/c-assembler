@@ -8,7 +8,6 @@ void validate_operand(Operand *operand,
                       unsigned short int valid_address_codes[]) {
   int i = 0;
   while (valid_address_codes[i] >= 0 && valid_address_codes[i] <= 3) {
-    // printf("[%d]: %d\n", i, valid_address_codes[i]);
     i++;
   }
   bool is_have_options = i > 0;
@@ -16,16 +15,10 @@ void validate_operand(Operand *operand,
     fprintf(stderr, "Error: operand is not allowed for operation\n");
     exit(EXIT_FAILURE);
   }
-  // printf("Operand is valid\n");
 }
 void validate_operands(OperatorLine *operator_line,
                        unsigned short int valid_src_address_codes[],
                        unsigned short int valid_dst_address_codes[]) {
-
-  // printf("Start to validate operands for line %s\n",
-  //        operator_line->parsed_line->tokens.line);
   validate_operand(operator_line->operand_dst, valid_dst_address_codes);
-  // puts("Finish to validate destination operand");
   validate_operand(operator_line->operand_src, valid_src_address_codes);
-  // puts("Finish to validate source operand");
 }

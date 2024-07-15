@@ -65,6 +65,5 @@ OperatorLine *parse_operator_line(ParsedLine *parsed_line) {
   operator_line->operand_src = build_operand(operator_line, SRC);
 
   operator_line->opcode = get_operator_index(parsed_line->tokens.type);
-  // print_operator(operator_line);
   return operator_line;
 }

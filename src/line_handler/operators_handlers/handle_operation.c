@@ -61,7 +61,6 @@ void validate_operator(OperatorLine *operator_line) {
 
 void handle_operation(DynamicArray *program, ParsedLine *parsed_line) {
   OperatorLine *operator_line;
-  // printf("Start to handle operation type %s\n", parsed_line->tokens.type);
   operator_line = parse_operator_line(parsed_line);
 
   validate_operator(operator_line);

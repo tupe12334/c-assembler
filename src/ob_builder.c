@@ -31,7 +31,6 @@ char *format_value(int value) {
   while (value_str[i] > 5) {
     i++;
   }
-  // printf("Amount of valid digits: %d\n", i);
   for (i; i < 5; i++) {
     value_str = str_append("0", value_str);
   }

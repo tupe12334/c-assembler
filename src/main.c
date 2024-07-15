@@ -1,7 +1,9 @@
 
 #include "../include/assembler.h"
+#include "../include/constants.h"
 #include "../include/file_utils.h"
 #include "../include/meta_assembler.h"
+#include "../include/string.h"
 #include "../include/utils.h"
 #include "../include/validation.h"
 #include <stdio.h>
@@ -16,8 +18,7 @@ int main(int argc, char *argv[]) {
     File_Meta file_meta;
     MetaAssembler meta_assembler;
 
-    // TODO replace with simple str_append
-    char *full_file_name = append_assembly_extension(file_name);
+    char *full_file_name = str_append(file_name, ASSEMBLY_FILE_EXTENSION);
     validate_file_access(full_file_name);
 
     file = fetch_file(full_file_name);
