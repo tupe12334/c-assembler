@@ -45,6 +45,7 @@ char *build_line(int index, int value) {
 }
 
 void ob_builder(DynamicArray *program, char *filename) {
+  int i;
   char *object_filename = str_append(filename, ".ob");
   int instruction_length = darray_code_lines(program);
   int data_length = darray_data_lines(program);
@@ -58,7 +59,7 @@ void ob_builder(DynamicArray *program, char *filename) {
       str_append(str_append(str_instruction_length, " "), str_data_length);
   write_file(object_filename, file_title);
   append_to_file(object_filename, "");
-  for (int i = 0; i < program->size; i++) {
+  for (i = 0; i < program->size; i++) {
     int value = program->data[i];
     char *line = build_line(i, value);
     append_to_file(object_filename, line);

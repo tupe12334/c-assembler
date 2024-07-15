@@ -47,10 +47,8 @@ void handle_operands(DynamicArray *program, OperatorLine *operator_line) {
 
     if (is_both_registers) {
       int binary_code = ABSOLUTE;
-      binary_code +=
-          handler_register_operand(operator_line->operand_dst, DST);
-      binary_code +=
-          handler_register_operand(operator_line->operand_src, SRC);
+      binary_code += handler_register_operand(operator_line->operand_dst, DST);
+      binary_code += handler_register_operand(operator_line->operand_src, SRC);
       darray_append(program, binary_code, false);
       return;
     }

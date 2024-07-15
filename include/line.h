@@ -20,7 +20,7 @@ enum AddressType {
   NUMBER = 1,
   LABEL = 2,
   REGISTER_VALUE = 4,
-  REGISTER_ADDRESS = 8,
+  REGISTER_ADDRESS = 8
 };
 
 typedef struct {
