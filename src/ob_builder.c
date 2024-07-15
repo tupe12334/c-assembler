@@ -17,7 +17,8 @@ char *format_index(int index) {
 }
 
 char *format_value(int value) {
-  char *value_str = decimal_to_octal(value);
+  char *binary = decimal_to_binary(value);
+  char *value_str = binary_to_octal(binary);
   int i = 0;
   while (value_str[i] > 5) {
     i++;
