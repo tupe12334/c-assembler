@@ -1,8 +1,7 @@
 #pragma once
-#include <stdbool.h>
+#include "bool.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 #define DYNAMIC_ARRAY_DATA_TYPE int
 
 typedef short int array_data;

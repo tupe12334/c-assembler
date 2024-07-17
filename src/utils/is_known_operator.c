@@ -1,9 +1,9 @@
+#include "../../include/bool.h"
 #include "../../include/constants.h"
 #include "../../include/is_instruction.h"
 #include "../../include/meta_assembler.h"
 #include "../../include/op_codes.h"
 #include "../../include/utils.h"
-#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 

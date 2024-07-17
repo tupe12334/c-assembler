@@ -1,5 +1,5 @@
 #include "../../include/dynamic_array.h"
-#include <stdbool.h>
+#include "../../include/bool.h"
 #include <stdio.h>
 #include <stdlib.h>
 

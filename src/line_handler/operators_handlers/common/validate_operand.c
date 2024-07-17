@@ -1,16 +1,17 @@
+#include "../../../../include/bool.h"
 #include "../../../../include/line.h"
 #include "../../../../include/operator_validators.h"
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 void validate_operand(Operand *operand,
                       unsigned short int valid_address_codes[]) {
+  bool is_have_options;
   int i = 0;
   while (valid_address_codes[i] >= 0 && valid_address_codes[i] <= 3) {
     i++;
   }
-  bool is_have_options = i > 0;
+  is_have_options = i > 0;
   if (operand != NULL && is_have_options == false) {
     fprintf(stderr, "Error: operand is not allowed for operation\n");
     exit(EXIT_FAILURE);

@@ -1,6 +1,6 @@
+#include "../../../../include/bool.h"
 #include "../../../../include/line.h"
 #include "../../../../include/operators_handlers.h"
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>

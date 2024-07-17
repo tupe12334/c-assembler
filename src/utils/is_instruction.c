@@ -1,7 +1,7 @@
+#include "../../include/bool.h"
 #include "../../include/constants.h"
 #include "../../include/instructors.h"
 #include "../../include/meta_assembler.h"
-#include <stdbool.h>
 #include <string.h>
 
 unsigned short int is_instruction(MetaAssembler meta_assembler, char *command) {

@@ -1,3 +1,4 @@
+#include "../../include/bool.h"
 #include "../../include/constants.h"
 #include "../../include/dictionary.h"
 #include "../../include/file_utils.h"
@@ -8,7 +9,6 @@
 #include "../../include/tokenizer.h"
 #include "../../include/types.h"
 #include "../../include/utils.h"
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
