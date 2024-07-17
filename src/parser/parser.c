@@ -11,7 +11,6 @@
 
 ParsedLine *parse_line(TokenizedLine tokenized_line,
                        MetaAssembler meta_assembler) {
-  int line_cursor = 0;
   ParsedLine *parsed_line = malloc(sizeof(ParsedLine));
   if (parsed_line == NULL) {
     fprintf(stderr, "Failed to allocate memory for parsed_line\n");

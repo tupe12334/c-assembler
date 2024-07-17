@@ -26,6 +26,7 @@ enum AddressType get_address_type(char *operand) {
 }
 
 Operand *build_operand(OperatorLine *operator_line, enum OperandSide side) {
+  Operand *operand;
   char *line = operator_line->parsed_line->tokens.value;
   char *value;
   if (!has_comma(line) && side == SRC) {
@@ -43,7 +44,7 @@ Operand *build_operand(OperatorLine *operator_line, enum OperandSide side) {
   if (value == NULL) {
     return NULL;
   }
-  Operand *operand = malloc(sizeof(Operand));
+  operand = malloc(sizeof(Operand));
   operand->value = value;
   operand->address_type = get_address_type(operand->value);
   return operand;
