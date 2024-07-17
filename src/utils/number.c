@@ -5,37 +5,42 @@
 #include <string.h>
 
 void print_binary(unsigned int num) {
+  int msb;
+  int i;
   if (num == 0) {
     printf("0");
     return;
   }
 
-  int msb = sizeof(num) * 8 - 1;
+  msb = sizeof(num) * 8 - 1;
   while (!(num & (1 << msb)) && msb > 0) {
     msb--;
   }
 
-  for (int i = msb; i >= 0; i--) {
+  for (i = msb; i >= 0; i--) {
     printf("%d", (num & (1 << i)) ? 1 : 0);
   }
 }
 
 char *binary_to_octal(const char *binary) {
+  int octal_len;
+  char *octal;
   int decimal = 0;
+  int i;
   int len = strlen(binary);
 
-  for (int i = 0; i < len; i++) {
+  for (i = 0; i < len; i++) {
     if (binary[i] == '1') {
       decimal += pow(2, len - 1 - i);
     }
   }
 
-  int octal_len = (int)ceil(log(decimal + 1) / log(8)) + 1;
-  char *octal = (char *)malloc(octal_len * sizeof(char));
+  octal_len = (int)ceil(log(decimal + 1) / log(8)) + 1;
+  octal = (char *)malloc(octal_len * sizeof(char));
 
-  int index = octal_len - 2;
+  i = octal_len - 2;
   while (decimal > 0) {
-    octal[index--] = (decimal % 8) + '0';
+    octal[i--] = (decimal % 8) + '0';
     decimal /= 8;
   }
   octal[octal_len - 1] = '\0';
@@ -48,6 +53,7 @@ char *binary_to_octal(const char *binary) {
   return octal;
 }
 char *decimal_to_binary(int8_t decimal) {
+  int i;
   char *binary = malloc(16 * sizeof(char));
   uint16_t unsigned_val;
 
@@ -57,7 +63,7 @@ char *decimal_to_binary(int8_t decimal) {
     unsigned_val = (uint16_t)decimal;
   }
 
-  for (int i = 14; i >= 0; i--) {
+  for (i = 14; i >= 0; i--) {
     binary[i] = (unsigned_val & 1) ? '1' : '0';
     unsigned_val >>= 1;
   }
@@ -66,6 +72,7 @@ char *decimal_to_binary(int8_t decimal) {
   return binary;
 }
 char *decimal_to_octal(int decimal) {
+  int j;
   static char octal[100];
   int i = 0;
 
@@ -80,7 +87,7 @@ char *decimal_to_octal(int decimal) {
 
   octal[i] = '\0';
 
-  for (int j = 0; j < i / 2; j++) {
+  for (j = 0; j < i / 2; j++) {
     char temp = octal[j];
     octal[j] = octal[i - 1 - j];
     octal[i - 1 - j] = temp;

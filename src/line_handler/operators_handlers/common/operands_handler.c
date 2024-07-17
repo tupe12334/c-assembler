@@ -16,9 +16,11 @@ int handle_operand(Operand *operand, enum OperandSide side) {
     binary_code += ABSOLUTE;
     binary_code += handle_number_operand(operand, side);
     break;
-    // case LABEL:
+    /*
+     case LABEL:
     //   binary_code += RELOCATABLE;
     //   binary_code += handle_label_operand(operand, side);
+    */
     break;
   case REGISTER_VALUE:
   case REGISTER_ADDRESS:

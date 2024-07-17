@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *format_index(int index) {
+string format_index(int index) {
   int display_index = index + IC_STARTING_NUMBER;
-  char *index_str;
+  string index_str;
   sprintf(index_str, "%d", display_index);
   if (display_index < 1000) {
     index_str = str_append("0", index_str);
@@ -18,6 +18,7 @@ char *format_index(int index) {
 
 char *format_value(int value) {
   char *value_str;
+  int i;
   if (value < 0) {
     char *binary = decimal_to_binary(value);
     value_str = binary_to_octal(binary);
@@ -27,11 +28,11 @@ char *format_value(int value) {
     value_str = decimal_to_octal(value);
   }
 
-  int i = 0;
+  i = 0;
   while (value_str[i] > 5) {
     i++;
   }
-  for (i; i < 5; i++) {
+  for (; i < 5; i++) {
     value_str = str_append("0", value_str);
   }
   return value_str;

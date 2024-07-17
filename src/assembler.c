@@ -12,8 +12,6 @@
 void assemble(FILE *assembly_file, File_Meta file_meta,
               MetaAssembler meta_assembler) {
   FILE *post_macro_file;
-  counter IC = IC_STARTING_NUMBER;
-  counter DC = 0;
   macros_handler(assembly_file, meta_assembler, file_meta.filename);
   post_macro_file = fetch_postmacro_file(file_meta.filename);
   DynamicArray *program = malloc(sizeof(DynamicArray));

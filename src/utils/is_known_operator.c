@@ -3,6 +3,7 @@
 #include "../../include/is_instruction.h"
 #include "../../include/meta_assembler.h"
 #include "../../include/op_codes.h"
+#include "../../include/string.h"
 #include "../../include/utils.h"
 #include <stdio.h>
 #include <string.h>
@@ -20,7 +21,7 @@ bool is_known_operator(char command[], MetaAssembler meta_assembler) {
   }
 
   for (i = 0; i < op_code_length; i++) {
-    char *op_code = get_op_codes()[i];
+    const string op_code = get_op_codes()[i];
     if (strcmp(command, op_code) == 0) {
       return true;
     }

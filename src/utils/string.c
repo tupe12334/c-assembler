@@ -14,10 +14,11 @@ char *str_append(char *string_a, char *string_b) {
 int has_comma(const char *str) { return strchr(str, ',') != NULL; }
 
 char *ltrim_x_chars(char *str, int x) {
+  size_t len;
   if (str == NULL || x <= 0)
     return str;
 
-  size_t len = strlen(str);
+  len = strlen(str);
   if ((size_t)x >= len)
     return str;
 
@@ -32,13 +33,14 @@ char *ltrim(char *s) {
 }
 
 char *rtrim(const char *str) {
+  char *trimmed;
   int n = strlen(str);
 
   while (n > 0 && isspace((unsigned char)str[n - 1])) {
     n--;
   }
 
-  char *trimmed = (char *)malloc(n + 1);
+  trimmed = (char *)malloc(n + 1);
   if (trimmed == NULL) {
     fprintf(stderr, "Memory allocation failed\n");
     exit(EXIT_FAILURE);

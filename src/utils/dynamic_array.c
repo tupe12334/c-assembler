@@ -17,10 +17,11 @@ void darray_inc_size(DynamicArray *array) {
 
 void darray_append(DynamicArray *array, array_data decimal_value,
                    bool is_data) {
+  int index;
   if (array->size == array->capacity) {
     darray_inc_size(array);
   }
-  int index = array->size;
+  index = array->size;
   array->data[index] = decimal_value;
   is_data == true ? array->data_lines++ : array->code_lines++;
   array->size++;
@@ -34,7 +35,8 @@ void darray_free(DynamicArray *array) {
 }
 
 void darray_print(DynamicArray *array) {
-  for (size_t i = 0; i < array->size; i++) {
+  size_t i;
+  for (i = 0; i < array->size; i++) {
     printf("[%zu]: %d\n", i, array->data[i]);
   }
   printf("Data lines: %d\n", array->data_lines);
