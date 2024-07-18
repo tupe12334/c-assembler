@@ -1,3 +1,4 @@
+#include "../../include/string.h"
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -22,9 +23,9 @@ void print_binary(unsigned int num) {
   }
 }
 
-char *binary_to_octal(const char *binary) {
+string binary_to_octal(const string binary) {
   int octal_len;
-  char *octal;
+  string octal;
   int decimal = 0;
   int i;
   int len = strlen(binary);
@@ -36,7 +37,7 @@ char *binary_to_octal(const char *binary) {
   }
 
   octal_len = (int)ceil(log(decimal + 1) / log(8)) + 1;
-  octal = (char *)malloc(octal_len * sizeof(char));
+  octal = (string)malloc(octal_len * sizeof(char));
 
   i = octal_len - 2;
   while (decimal > 0) {
@@ -52,9 +53,9 @@ char *binary_to_octal(const char *binary) {
 
   return octal;
 }
-char *decimal_to_binary(int8_t decimal) {
+string decimal_to_binary(int8_t decimal) {
   int i;
-  char *binary = malloc(16 * sizeof(char));
+  string binary = malloc(16 * sizeof(char));
   uint16_t unsigned_val;
 
   if (decimal < 0) {
@@ -71,7 +72,7 @@ char *decimal_to_binary(int8_t decimal) {
 
   return binary;
 }
-char *decimal_to_octal(int decimal) {
+string decimal_to_octal(int decimal) {
   int j;
   static char octal[100];
   int i = 0;

@@ -11,7 +11,7 @@ void validate_at_least_one_input(int argc) {
     exit(EXIT_FAILURE);
   }
 }
-void validate_file_access(char *full_file_name) {
+void validate_file_access(string full_file_name) {
   if (access(full_file_name, F_OK) != 0) {
     fprintf(stderr, "File %s does not exist\n", full_file_name);
     exit(EXIT_FAILURE);
@@ -23,7 +23,7 @@ void validate_file_access(char *full_file_name) {
   return;
 }
 
-void validate_input(int argc, char *argv[]) {
+void validate_input(int argc, string argv[]) {
   validate_at_least_one_input(argc);
   return;
 }

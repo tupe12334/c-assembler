@@ -1,19 +1,20 @@
+#include "../../include/string.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-char *str_append(char *string_a, char *string_b) {
-  char *new_str =
-      (char *)malloc((strlen(string_a) + strlen(string_b) + 1) * sizeof(char));
+string str_append(string string_a, string string_b) {
+  string new_str =
+      (string)malloc((strlen(string_a) + strlen(string_b) + 1) * sizeof(char));
   strcpy(new_str, string_a);
   strcat(new_str, string_b);
   return new_str;
 }
 
-int has_comma(const char *str) { return strchr(str, ',') != NULL; }
+int has_comma(const string str) { return strchr(str, ',') != NULL; }
 
-char *ltrim_x_chars(char *str, int x) {
+string ltrim_x_chars(string str, int x) {
   size_t len;
   if (str == NULL || x <= 0)
     return str;
@@ -26,21 +27,21 @@ char *ltrim_x_chars(char *str, int x) {
   return str;
 }
 
-char *ltrim(char *s) {
+string ltrim(string s) {
   while (isspace((unsigned char)*s))
     s++;
   return s;
 }
 
-char *rtrim(const char *str) {
-  char *trimmed;
+string rtrim(const string str) {
+  string trimmed;
   int n = strlen(str);
 
   while (n > 0 && isspace((unsigned char)str[n - 1])) {
     n--;
   }
 
-  trimmed = (char *)malloc(n + 1);
+  trimmed = (string)malloc(n + 1);
   if (trimmed == NULL) {
     fprintf(stderr, "Memory allocation failed\n");
     exit(EXIT_FAILURE);
@@ -52,4 +53,4 @@ char *rtrim(const char *str) {
   return trimmed;
 }
 
-char *trim(char *str) { return ltrim(rtrim(str)); }
+string trim(string str) { return ltrim(rtrim(str)); }

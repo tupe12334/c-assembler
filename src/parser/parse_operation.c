@@ -6,9 +6,9 @@
 
 #define OPERATION_REGEX "^[a-zA-Z_\\.][a-zA-Z0-9_]*"
 
-char *parse_operation(char *line, int *line_cursor) {
-  char *type;
-  char *substring = malloc(strlen(line) - sizeof(char) * (*line_cursor));
+string parse_operation(string line, int *line_cursor) {
+  string type;
+  string substring = malloc(strlen(line) - sizeof(char) * (*line_cursor));
   skip_white_spaces(line, line_cursor);
   strcpy(substring, line + *line_cursor);
 

@@ -13,13 +13,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-void handle_recording(char **macro_recording, TokenizedLine *tokenized_line,
+void handle_recording(string *macro_recording, TokenizedLine *tokenized_line,
                       Dictionary *dictionary, unsigned long int LC) {
-  char *dictionary_value;
+  string dictionary_value;
   int line_length;
   int current_dictionary_value_length;
   int new_length;
-  char *combine_values;
+  string combine_values;
   if (is_macro_declaration_end(tokenized_line->type) == 0) {
     *macro_recording = NULL;
     printf("Exit macro_recording in line %lu\n", LC);
@@ -31,7 +31,7 @@ void handle_recording(char **macro_recording, TokenizedLine *tokenized_line,
   current_dictionary_value_length = safe_strlen(dictionary_value);
 
   new_length = line_length + current_dictionary_value_length + 1;
-  combine_values = (char *)malloc(new_length * sizeof(char));
+  combine_values = (string)malloc(new_length * sizeof(char));
   if (dictionary_value != NULL) {
     strcpy(combine_values, dictionary_value);
     strcat(combine_values, "\n");
@@ -43,12 +43,12 @@ void handle_recording(char **macro_recording, TokenizedLine *tokenized_line,
 }
 
 void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
-                    char *filename) {
+                    string filename) {
   counter LC;
   char line[MAX_LINE_LENGTH];
   TokenizedLine *tokenize_line;
-  char *am_filename;
-  char *macro_recording = NULL;
+  string am_filename;
+  string macro_recording = NULL;
   Dictionary *dictionary = create_dictionary();
 
   /* Line counter */
@@ -76,7 +76,7 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
       continue;
     }
     if (is_known_operator(tokenize_line->type, meta_assembler) == false) {
-      char *macr_value = lookup(dictionary, tokenize_line->type);
+      string macr_value = lookup(dictionary, tokenize_line->type);
       if (macr_value != NULL) {
         printf("Found a macr use in line %lu\n", LC);
         append_to_file(am_filename, macr_value);

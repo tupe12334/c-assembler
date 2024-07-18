@@ -9,16 +9,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, string argv[]) {
   int i;
   validate_input(argc, argv);
   for (i = 1; i < argc; i++) {
     FILE *file;
-    char *file_name = argv[i];
+    string file_name = argv[i];
     File_Meta file_meta;
     MetaAssembler meta_assembler;
 
-    char *full_file_name = str_append(file_name, ASSEMBLY_FILE_EXTENSION);
+    string full_file_name = str_append(file_name, ASSEMBLY_FILE_EXTENSION);
     validate_file_access(full_file_name);
 
     file = fetch_file(full_file_name);

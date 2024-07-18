@@ -5,8 +5,8 @@
 #include <stdlib.h>
 
 int handle_number_operand(Operand *operand, enum OperandSide side) {
-  char *value = operand->value;
-  char *trimmed_value = ltrim_x_chars(value, 1);
+  string value = operand->value;
+  string trimmed_value = ltrim_x_chars(value, 1);
   int num_value = atoi(trimmed_value) << 3;
 
   return num_value;

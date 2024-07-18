@@ -7,7 +7,7 @@
 
 void handle_instructions(DynamicArray *program, ParsedLine *parsed_line) {
 
-  const char *instruction = parsed_line->tokens.type;
+  const string instruction = parsed_line->tokens.type;
   if (strcmp(instruction, ".string") == 0) {
     handle_string(program, parsed_line);
     return;

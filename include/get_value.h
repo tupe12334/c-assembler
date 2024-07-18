@@ -1,2 +1,3 @@
 #pragma once
-char *get_value(char *line, int *line_cursor);
+#include "string.h"
+string get_value(string line, int *line_cursor);

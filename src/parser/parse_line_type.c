@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-enum LineType command_to_line_type(char *command,
+enum LineType command_to_line_type(string command,
                                    MetaAssembler meta_assembler) {
   int i;
   if (command == NULL) {

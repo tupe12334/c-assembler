@@ -1,2 +1,3 @@
 #pragma once
-char *extract_word(char *line, char *regex);
+#include "string.h"
+string extract_word(string line, string regex);

@@ -4,9 +4,9 @@
 
 #define LABEL_REGEX "^[A-Z]+:"
 
-char *parse_label(char *line, int *line_cursor) {
-  char *label_without_colon;
-  char *label = extract_word(line, LABEL_REGEX);
+string parse_label(string line, int *line_cursor) {
+  string label_without_colon;
+  string label = extract_word(line, LABEL_REGEX);
   if (label == NULL) {
     return NULL;
   }

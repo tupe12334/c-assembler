@@ -1,3 +1,4 @@
+#include "../../include/string.h"
 #include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -5,11 +6,11 @@
 
 #define MAX_MATCHES 100
 
-char *extract_word(char *line, char *regex_pattern) {
+string extract_word(string line, string regex_pattern) {
   regex_t regex;
   regmatch_t matches[MAX_MATCHES];
   int reti;
-  char *result;
+  string result;
   reti = regcomp(&regex, regex_pattern, REG_EXTENDED);
   if (reti) {
     fprintf(stderr, "Could not compile regex\n");

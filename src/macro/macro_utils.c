@@ -11,16 +11,16 @@
 #define MACRO_DECLARATION "macr"
 #define MACRO_END "endmacr"
 
-unsigned short int is_macro_declaration_start(char *type) {
+unsigned short int is_macro_declaration_start(string type) {
   return strcmp(type, MACRO_DECLARATION);
 }
 
-unsigned short int is_macro_declaration_end(char *type) {
+unsigned short int is_macro_declaration_end(string type) {
   return strcmp(type, MACRO_END);
 }
 
-unsigned short int is_comment(char *line) { return line[0] == ';'; }
-unsigned short int is_line_empty(char *line) {
+unsigned short int is_comment(string line) { return line[0] == ';'; }
+unsigned short int is_line_empty(string line) {
   int i;
   for (i = 0; i < strlen(line); i++) {
 
@@ -31,6 +31,6 @@ unsigned short int is_line_empty(char *line) {
   return 1;
 }
 
-FILE *fetch_postmacro_file(char *filename) {
+FILE *fetch_postmacro_file(string filename) {
   return fetch_file(str_append(filename, ".am"));
 }

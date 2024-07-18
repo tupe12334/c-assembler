@@ -16,11 +16,11 @@ string format_index(int index) {
   return index_str;
 }
 
-char *format_value(int value) {
-  char *value_str;
+string format_value(int value) {
+  string value_str;
   int i;
   if (value < 0) {
-    char *binary = decimal_to_binary(value);
+    string binary = decimal_to_binary(value);
     value_str = binary_to_octal(binary);
     free(binary);
     binary = NULL;
@@ -37,16 +37,16 @@ char *format_value(int value) {
   }
   return value_str;
 }
-char *build_line(int index, int value) {
-  char *formatted_index = format_index(index);
-  char *formatted_value = format_value(value);
-  char *line = str_append(formatted_index, str_append(" ", formatted_value));
+string build_line(int index, int value) {
+  string formatted_index = format_index(index);
+  string formatted_value = format_value(value);
+  string line = str_append(formatted_index, str_append(" ", formatted_value));
   return line;
 }
 
-void ob_builder(DynamicArray *program, char *filename) {
+void ob_builder(DynamicArray *program, string filename) {
   int i;
-  char *object_filename = str_append(filename, ".ob");
+  string object_filename = str_append(filename, ".ob");
   int instruction_length = darray_code_lines(program);
   int data_length = darray_data_lines(program);
   char str_instruction_length[5];
@@ -55,13 +55,13 @@ void ob_builder(DynamicArray *program, char *filename) {
   sprintf(str_instruction_length, "%d", instruction_length);
   sprintf(str_data_length, "%d", data_length);
 
-  char *file_title =
+  string file_title =
       str_append(str_append(str_instruction_length, " "), str_data_length);
   write_file(object_filename, file_title);
   append_to_file(object_filename, "");
   for (i = 0; i < program->size; i++) {
     int value = program->data[i];
-    char *line = build_line(i, value);
+    string line = build_line(i, value);
     append_to_file(object_filename, line);
   }
 }

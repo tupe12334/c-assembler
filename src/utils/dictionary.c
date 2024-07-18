@@ -26,7 +26,7 @@ Dictionary *create_dictionary(void) {
   return dict;
 }
 
-void insert(Dictionary *dict, const char *key, const char *value) {
+void insert(Dictionary *dict, const string key, const string value) {
   unsigned int index = hash(key);
   Entry *new_entry = (Entry *)malloc(sizeof(Entry));
   if (new_entry == NULL) {
@@ -39,7 +39,7 @@ void insert(Dictionary *dict, const char *key, const char *value) {
   new_entry->next = dict->table[index];
   dict->table[index] = new_entry;
 }
-char *lookup(Dictionary *dict, const char *key) {
+string lookup(Dictionary *dict, const string key) {
   unsigned int index = hash(key);
   Entry *entry = dict->table[index];
 

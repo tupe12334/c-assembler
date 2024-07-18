@@ -1,2 +1,3 @@
 #pragma once
-char *parse_label(char *line, int *line_cursor);
+#include "string.h"
+string parse_label(string line, int *line_cursor);

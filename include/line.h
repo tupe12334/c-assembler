@@ -1,12 +1,13 @@
 #pragma once
+#include "string.h"
 
 enum LineType { EMPTY, OPERATION, INSTRUCTION, MACRO };
 
 typedef struct {
-  char *label;
-  char *type;
-  char *value;
-  char *line;
+  string label;
+  string type;
+  string value;
+  string line;
 } TokenizedLine;
 
 typedef struct {
@@ -24,7 +25,7 @@ enum AddressType {
 };
 
 typedef struct {
-  char *value;
+  string value;
   enum AddressType address_type;
 } Operand;
 

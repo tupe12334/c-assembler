@@ -5,7 +5,7 @@
 #include <string.h>
 
 void handle_string(DynamicArray *program, ParsedLine *parsed_line) {
-  char *value = trim(parsed_line->tokens.value);
+  string value = trim(parsed_line->tokens.value);
   int length = strlen(value);
   int i;
   for (i = 1; i < length - 1; i++) {

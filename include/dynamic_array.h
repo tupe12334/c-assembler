@@ -1,5 +1,6 @@
 #pragma once
 #include "bool.h"
+#include "string.h"
 #include <stdio.h>
 #include <stdlib.h>
 #define DYNAMIC_ARRAY_DATA_TYPE int

@@ -1,8 +1,9 @@
 
+#include "../../include/string.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-FILE *fetch_file(char *full_file_name) {
+FILE *fetch_file(string full_file_name) {
   FILE *file;
   file = fopen(full_file_name, "r");
 
@@ -14,7 +15,7 @@ FILE *fetch_file(char *full_file_name) {
   return file;
 }
 
-void write_file(char *filename, char *content) {
+void write_file(string filename, string content) {
   FILE *file;
   file = fopen(filename, "w");
 
@@ -29,7 +30,7 @@ void write_file(char *filename, char *content) {
   return;
 }
 
-void append_to_file(char *filename, char *content) {
+void append_to_file(string filename, string content) {
   FILE *file;
   file = fopen(filename, "a");
 
@@ -44,7 +45,7 @@ void append_to_file(char *filename, char *content) {
   return;
 }
 
-void reset_file(char *filename) {
+void reset_file(string filename) {
   write_file(filename, "");
   return;
 }

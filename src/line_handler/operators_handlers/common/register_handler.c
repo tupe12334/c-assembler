@@ -6,8 +6,8 @@
 
 #define REGISTER_NUMBER_REGEX "([0-7])"
 
-unsigned short int extract_register_number(char *operand_value) {
-  char *str_number = extract_word(operand_value, REGISTER_NUMBER_REGEX);
+unsigned short int extract_register_number(string operand_value) {
+  string str_number = extract_word(operand_value, REGISTER_NUMBER_REGEX);
   return atoi(str_number);
 }
 int handler_register_operand(Operand *operand, enum OperandSide side) {

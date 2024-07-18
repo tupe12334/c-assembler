@@ -1,15 +1,16 @@
 #pragma once
-void skip_white_spaces(char *line, int *line_cursor);
+#include "string.h"
+void skip_white_spaces(string line, int *line_cursor);
 
-int safe_strlen(const char *string);
+int safe_strlen(const string string);
 
 typedef struct {
-  char *filename;
+  string filename;
 } File_Meta;
 
-int array_length(char **array);
+int array_length(string *array);
 
-unsigned short int is_comment(char *line);
-unsigned short int is_line_empty(char *line);
+unsigned short int is_comment(string line);
+unsigned short int is_line_empty(string line);
 
-unsigned short int get_operator_index(char *opcode);
+unsigned short int get_operator_index(string opcode);

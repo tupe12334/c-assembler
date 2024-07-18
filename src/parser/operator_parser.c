@@ -11,7 +11,7 @@
 #define OPERAND_REGEX "^([^,\\s]+)"
 #define SEC_OPERAND_REGEX "([^,\n\t \r]+)$"
 
-enum AddressType get_address_type(char *operand) {
+enum AddressType get_address_type(string operand) {
   char first_char = operand[0];
   switch (first_char) {
   case '#':
@@ -27,8 +27,8 @@ enum AddressType get_address_type(char *operand) {
 
 Operand *build_operand(OperatorLine *operator_line, enum OperandSide side) {
   Operand *operand;
-  char *line = operator_line->parsed_line->tokens.value;
-  char *value;
+  string line = operator_line->parsed_line->tokens.value;
+  string value;
   if (!has_comma(line) && side == SRC) {
     return NULL;
   }
