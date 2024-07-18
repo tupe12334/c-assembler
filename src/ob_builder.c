@@ -8,7 +8,7 @@
 
 string format_index(int index) {
   int display_index = index + IC_STARTING_NUMBER;
-  string index_str;
+  string index_str = (string)malloc(4 * sizeof(char));
   sprintf(index_str, "%d", display_index);
   if (display_index < 1000) {
     index_str = str_append("0", index_str);
@@ -46,6 +46,7 @@ string build_line(int index, int value) {
 
 void ob_builder(DynamicArray *program, string filename) {
   int i;
+  string file_title;
   string object_filename = str_append(filename, ".ob");
   int instruction_length = darray_code_lines(program);
   int data_length = darray_data_lines(program);
@@ -55,7 +56,7 @@ void ob_builder(DynamicArray *program, string filename) {
   sprintf(str_instruction_length, "%d", instruction_length);
   sprintf(str_data_length, "%d", data_length);
 
-  string file_title =
+  file_title =
       str_append(str_append(str_instruction_length, " "), str_data_length);
   write_file(object_filename, file_title);
   append_to_file(object_filename, "");
