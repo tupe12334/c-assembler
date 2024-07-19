@@ -2,6 +2,7 @@
 #include "../include/dynamic_array.h"
 #include "../include/file_utils.h"
 #include "../include/number.h"
+#include "../include/program.h"
 #include "../include/string.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,12 +45,12 @@ string build_line(int index, int value) {
   return line;
 }
 
-void ob_builder(DynamicArray *program, string filename) {
+void ob_builder(Program *program, string filename) {
   int i;
   string file_title;
   string object_filename = str_append(filename, ".ob");
-  int instruction_length = darray_code_lines(program);
-  int data_length = darray_data_lines(program);
+  int instruction_length = program_code_lines(program);
+  int data_length = program_data_lines(program);
   char str_instruction_length[5];
   char str_data_length[5];
 
@@ -60,8 +61,8 @@ void ob_builder(DynamicArray *program, string filename) {
       str_append(str_append(str_instruction_length, " "), str_data_length);
   write_file(object_filename, file_title);
   append_to_file(object_filename, "");
-  for (i = 0; i < program->size; i++) {
-    int value = program->data[i];
+  for (i = 0; i < program->darray->size; i++) {
+    int value = program->darray->data[i];
     string line = build_line(i, value);
     append_to_file(object_filename, line);
   }

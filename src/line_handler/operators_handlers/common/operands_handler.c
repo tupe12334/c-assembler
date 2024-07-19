@@ -1,6 +1,7 @@
 #include "../../../../include/bool.h"
 #include "../../../../include/line.h"
 #include "../../../../include/operators_handlers.h"
+#include "../../../../include/program.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,7 +33,7 @@ int handle_operand(Operand *operand, enum OperandSide side) {
   return binary_code;
 }
 
-void handle_operands(DynamicArray *program, OperatorLine *operator_line) {
+void handle_operands(Program *program, OperatorLine *operator_line) {
   bool is_have_src = operator_line->operand_src != NULL;
   bool is_have_dst = operator_line->operand_dst != NULL;
 
@@ -51,17 +52,17 @@ void handle_operands(DynamicArray *program, OperatorLine *operator_line) {
       int binary_code = ABSOLUTE;
       binary_code += handler_register_operand(operator_line->operand_dst, DST);
       binary_code += handler_register_operand(operator_line->operand_src, SRC);
-      darray_append(program, binary_code, false);
+      program_append(program, binary_code, false);
       return;
     }
   }
 
   if (is_have_src) {
     int binary_code = handle_operand(operator_line->operand_src, SRC);
-    darray_append(program, binary_code, false);
+    program_append(program, binary_code, false);
   }
   if (is_have_dst) {
     int binary_code = handle_operand(operator_line->operand_dst, DST);
-    darray_append(program, binary_code, false);
+    program_append(program, binary_code, false);
   }
 }

@@ -3,11 +3,12 @@
 #include "../include/line.h"
 #include "../include/line_handler.h"
 #include "../include/parser.h"
+#include "../include/program.h"
 #include "../include/tokenizer.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void first_pass_handler(DynamicArray *program, FILE *post_macro_file,
+void first_pass_handler(Program *program, FILE *post_macro_file,
                         MetaAssembler meta_assembler) {
   char line[MAX_LINE_LENGTH];
   TokenizedLine *tokenized_line;

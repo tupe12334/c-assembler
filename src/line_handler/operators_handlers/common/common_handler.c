@@ -1,9 +1,10 @@
 #include "../../../../include/dynamic_array.h"
 #include "../../../../include/line.h"
 #include "../../../../include/operator_validators.h"
+#include "../../../../include/program.h"
 #include <stdio.h>
 
-int common_handler(DynamicArray *program, OperatorLine *operator_line) {
+int common_handler(Program *program, OperatorLine *operator_line) {
   int binary_code = 0;
   int op_code_binary_section;
   int instruction_binary_code = ABSOLUTE;

@@ -15,15 +15,13 @@ void darray_inc_size(DynamicArray *array) {
       (array_data *)realloc(array->data, array->capacity * sizeof(array_data));
 }
 
-void darray_append(DynamicArray *array, array_data decimal_value,
-                   bool is_data) {
+void darray_append(DynamicArray *array, array_data decimal_value) {
   int index;
   if (array->size == array->capacity) {
     darray_inc_size(array);
   }
   index = array->size;
   array->data[index] = decimal_value;
-  is_data == true ? array->data_lines++ : array->code_lines++;
   array->size++;
 }
 
@@ -39,8 +37,4 @@ void darray_print(DynamicArray *array) {
   for (i = 0; i < array->size; i++) {
     printf("[%zu]: %d\n", i, array->data[i]);
   }
-  printf("Data lines: %d\n", array->data_lines);
 }
-int darray_data_lines(DynamicArray *array) { return array->data_lines; }
-
-int darray_code_lines(DynamicArray *array) { return array->code_lines; }

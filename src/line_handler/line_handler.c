@@ -1,7 +1,8 @@
 #include "../../include/line_handler.h"
+#include "../../include/program.h"
 #include <stdio.h>
 
-void line_handler(DynamicArray *program, ParsedLine *parsed_line) {
+void line_handler(Program *program, ParsedLine *parsed_line) {
   switch (parsed_line->line_type) {
   case OPERATION:
     handle_operation(program, parsed_line);

@@ -2,10 +2,11 @@
 #include "../../../include/instructions_handlers.h"
 #include "../../../include/instructors.h"
 #include "../../../include/line.h"
+#include "../../../include/program.h"
 #include <stdio.h>
 #include <string.h>
 
-void handle_instructions(DynamicArray *program, ParsedLine *parsed_line) {
+void handle_instructions(Program *program, ParsedLine *parsed_line) {
 
   const string instruction = parsed_line->tokens.type;
   if (strcmp(instruction, ".string") == 0) {
