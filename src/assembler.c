@@ -3,9 +3,9 @@
 #include "../include/dictionary.h"
 #include "../include/dynamic_array.h"
 #include "../include/file_builders.h"
-#include "../include/first_pass.h"
 #include "../include/macro_utils.h"
 #include "../include/macros_handler.h"
+#include "../include/pass_handler.h"
 #include "../include/program.h"
 #include "../include/types.h"
 #include "../include/utils.h"
@@ -25,6 +25,6 @@ void assemble(FILE *assembly_file, File_Meta file_meta,
   Dictionary *label_table;
   label_table = create_dictionary();
 
-  first_pass_handler(program, post_macro_file, label_table, *meta_assembler);
+  pass_handler(program, post_macro_file, label_table, meta_assembler);
   ob_builder(program, file_meta.filename);
 }
