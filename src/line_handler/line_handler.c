@@ -3,9 +3,13 @@
 #include "../../include/program.h"
 #include <stdio.h>
 
-void line_handler(Program *program, Dictionary *label_table,
-                  ParsedLine *parsed_line) {
+void start_line_handler_log(ParsedLine *parsed_line) {
+  printf("Starting line handler for line %s\n", parsed_line->tokens.line);
+}
 
+void line_handler(Program *program, Dictionary *label_table,
+                  ParsedLine *parsed_line, MetaAssembler meta_assembler) {
+  start_line_handler_log(parsed_line);
   string program_address;
   if (parsed_line->tokens.label != NULL) {
     sprintf(program_address, "%zu", program->darray->size);
