@@ -12,17 +12,19 @@
 #include <stdio.h>
 
 void assemble(FILE *assembly_file, File_Meta file_meta,
-              MetaAssembler meta_assembler) {
+              MetaAssembler *meta_assembler) {
   FILE *post_macro_file;
-  macros_handler(assembly_file, meta_assembler, file_meta.filename);
+
+  meta_assembler->pase = PRE_MACRO;
+  macros_handler(assembly_file, file_meta.filename);
   post_macro_file = fetch_postmacro_file(file_meta.filename);
   Program *program = malloc(sizeof(Program));
   program_init(program);
   puts("Fetched file post macro");
-  meta_assembler.pase = FIRST_RUN;
+  meta_assembler->pase = FIRST_RUN;
   Dictionary *label_table;
   label_table = create_dictionary();
 
-  first_pass_handler(program, post_macro_file, label_table, meta_assembler);
+  first_pass_handler(program, post_macro_file, label_table, *meta_assembler);
   ob_builder(program, file_meta.filename);
 }

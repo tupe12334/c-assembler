@@ -2,7 +2,6 @@
 #include "../include/assembler.h"
 #include "../include/constants.h"
 #include "../include/file_utils.h"
-#include "../include/meta_assembler.h"
 #include "../include/string.h"
 #include "../include/utils.h"
 #include "../include/validation.h"
@@ -16,7 +15,9 @@ int main(int argc, string argv[]) {
     FILE *file;
     string file_name = argv[i];
     File_Meta file_meta;
-    MetaAssembler meta_assembler;
+    MetaAssembler *meta_assembler;
+
+    meta_assembler = (MetaAssembler *)malloc(sizeof(MetaAssembler));
 
     string full_file_name = str_append(file_name, ASSEMBLY_FILE_EXTENSION);
     validate_file_access(full_file_name);
@@ -24,7 +25,6 @@ int main(int argc, string argv[]) {
     file = fetch_file(full_file_name);
 
     file_meta.filename = file_name;
-    meta_assembler = meta_assembler_init();
     assemble(file, file_meta, meta_assembler);
 
     fclose(file);

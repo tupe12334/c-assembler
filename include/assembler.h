@@ -11,4 +11,4 @@ typedef struct {
 } MetaAssembler;
 
 void assemble(FILE *assembly_file, File_Meta file_meta,
-              MetaAssembler meta_assembler);
+              MetaAssembler *meta_assembler);

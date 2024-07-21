@@ -4,7 +4,6 @@
 #include "../../include/file_utils.h"
 #include "../../include/is_known_operator.h"
 #include "../../include/macro_utils.h"
-#include "../../include/meta_assembler.h"
 #include "../../include/string.h"
 #include "../../include/tokenizer.h"
 #include "../../include/types.h"
