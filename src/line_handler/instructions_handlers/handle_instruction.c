@@ -1,3 +1,4 @@
+#include "../../../include/dictionary.h"
 #include "../../../include/dynamic_array.h"
 #include "../../../include/instructions_handlers.h"
 #include "../../../include/instructors.h"
@@ -6,7 +7,8 @@
 #include <stdio.h>
 #include <string.h>
 
-void handle_instructions(Program *program, ParsedLine *parsed_line) {
+void handle_instructions(Program *program, Dictionary *label_table,
+                         ParsedLine *parsed_line) {
 
   const string instruction = parsed_line->tokens.type;
   if (strcmp(instruction, ".string") == 0) {

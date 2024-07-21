@@ -9,21 +9,17 @@
 #include <stdlib.h>
 
 void first_pass_handler(Program *program, FILE *post_macro_file,
-                        MetaAssembler meta_assembler) {
+                        Dictionary *label_table, MetaAssembler meta_assembler) {
   char line[MAX_LINE_LENGTH];
   TokenizedLine *tokenized_line;
   ParsedLine *parsed_line;
-  Dictionary *label_table;
+
   puts("Starting to run the first pass on file");
-  label_table = create_dictionary();
 
   while (fgets(line, sizeof(line), post_macro_file)) {
     tokenized_line = tokenize(line, meta_assembler);
     parsed_line = parse_line(*tokenized_line, meta_assembler);
-    line_handler(program, parsed_line);
-    if (parsed_line->tokens.label != NULL) {
-      insert(label_table, parsed_line->tokens.label, "");
-    }
+    line_handler(program, label_table, parsed_line);
   }
   free(parsed_line);
   free(tokenized_line);

@@ -1,4 +1,5 @@
 #include "../../include/dictionary.h"
+#include "../../include/bool.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,7 +27,7 @@ Dictionary *create_dictionary(void) {
   return dict;
 }
 
-void insert(Dictionary *dict, const string key, const string value) {
+void insert(Dictionary *dict, const string key, const VALUE_TYPE value) {
   unsigned int index = hash(key);
   Entry *new_entry = (Entry *)malloc(sizeof(Entry));
   if (new_entry == NULL) {
@@ -39,7 +40,7 @@ void insert(Dictionary *dict, const string key, const string value) {
   new_entry->next = dict->table[index];
   dict->table[index] = new_entry;
 }
-string lookup(Dictionary *dict, const string key) {
+VALUE_TYPE lookup(Dictionary *dict, const string key) {
   unsigned int index = hash(key);
   Entry *entry = dict->table[index];
 
