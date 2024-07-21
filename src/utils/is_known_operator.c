@@ -1,7 +1,6 @@
 #include "../../include/bool.h"
 #include "../../include/constants.h"
 #include "../../include/is_instruction.h"
-#include "../../include/meta_assembler.h"
 #include "../../include/op_codes.h"
 #include "../../include/string.h"
 #include "../../include/utils.h"
@@ -12,11 +11,11 @@
 This function runs on the op_code object "name" values and on the instructions
 array and compare if the operator is known.
 */
-bool is_known_operator(char command[], MetaAssembler meta_assembler) {
+bool is_known_operator(char command[]) {
   int i;
   int op_code_length = get_op_codes_length();
 
-  if (is_instruction(meta_assembler, command) == true) {
+  if (is_instruction(command) == true) {
     return true;
   }
 

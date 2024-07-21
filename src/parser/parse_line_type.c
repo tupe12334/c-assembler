@@ -16,7 +16,7 @@ enum LineType command_to_line_type(string command,
   }
 
   if (command[0] == '.') {
-    if (is_instruction(meta_assembler, command) == true) {
+    if (is_instruction(command) == true) {
       return INSTRUCTION;
     }
   }

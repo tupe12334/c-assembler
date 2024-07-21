@@ -42,8 +42,7 @@ void handle_recording(string *macro_recording, TokenizedLine *tokenized_line,
   free(combine_values);
 }
 
-void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
-                    string filename) {
+void macros_handler(FILE *assembly_file, string filename) {
   counter LC;
   char line[MAX_LINE_LENGTH];
   TokenizedLine *tokenize_line;
@@ -64,7 +63,7 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
       continue;
     };
 
-    tokenize_line = tokenize(line, meta_assembler);
+    tokenize_line = tokenize(line);
     if (is_macro_declaration_start(tokenize_line->type) == 0) {
       macro_recording = tokenize_line->value;
       printf("Enter macro_recording in line %lu\n", LC);
@@ -75,7 +74,7 @@ void macros_handler(FILE *assembly_file, MetaAssembler meta_assembler,
       handle_recording(&macro_recording, tokenize_line, dictionary, LC);
       continue;
     }
-    if (is_known_operator(tokenize_line->type, meta_assembler) == false) {
+    if (is_known_operator(tokenize_line->type) == false) {
       string macr_value = lookup(dictionary, tokenize_line->type);
       if (macr_value != NULL) {
         printf("Found a macr use in line %lu\n", LC);

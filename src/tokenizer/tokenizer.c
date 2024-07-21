@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-TokenizedLine *tokenize(string line, MetaAssembler meta_assembler) {
+TokenizedLine *tokenize(string line) {
   int line_cursor = 0;
 
   TokenizedLine *tokenized_line = malloc(sizeof(TokenizedLine));
