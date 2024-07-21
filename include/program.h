@@ -6,8 +6,6 @@
 #include <stdlib.h>
 #define DYNAMIC_ARRAY_DATA_TYPE int
 
-typedef short int array_data;
-
 typedef struct {
   DynamicArray *darray;
   int data_lines;
