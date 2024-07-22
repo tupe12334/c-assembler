@@ -12,7 +12,7 @@ typedef struct {
   size_t capacity;
 } DynamicArray;
 
-void darray_init(DynamicArray *list, size_t initialCapacity);
+void darray_init(DynamicArray *array, size_t initialCapacity);
 void darray_append(DynamicArray *array, array_data decimal_value);
-void darray_free(DynamicArray *list);
-void darray_print(DynamicArray *list);
+void darray_free(DynamicArray *array);
+void darray_print(DynamicArray *array);
