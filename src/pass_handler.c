@@ -22,7 +22,9 @@ void pass_handler(Program *program, FILE *file, Dictionary *label_table,
     tokenized_line = tokenize(line);
     parsed_line = parse_line(*tokenized_line, meta_assembler);
     line_handler(program, label_table, parsed_line, meta_assembler);
+    free(tokenized_line);
+    tokenized_line = NULL;
+    free(parsed_line);
+    parsed_line = NULL;
   }
-  free(tokenized_line);
-  free(parsed_line);
 }

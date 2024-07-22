@@ -38,3 +38,5 @@ void darray_print(DynamicArray *array) {
     printf("[%zu]: %d\n", i, array->data[i]);
   }
 }
+
+size_t darray_size(DynamicArray *array) { return array->size; }

@@ -16,3 +16,5 @@ void program_append(Program *program, array_data decimal_value, bool is_data) {
   is_data == true ? program->data_lines++ : program->code_lines++;
   darray_append(program->darray, decimal_value);
 }
+
+size_t program_size(Program *program) { return darray_size(program->darray); }

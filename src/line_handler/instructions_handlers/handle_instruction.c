@@ -27,4 +27,5 @@ void handle_instructions(Program *program, Dictionary *label_table,
   /*  else if (strcmp(instruction, ".entry") == 0) {
     return;
 }*/
+  return;
 }
