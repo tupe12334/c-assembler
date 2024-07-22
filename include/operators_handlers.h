@@ -4,7 +4,7 @@
 #include "line.h"
 #include "program.h"
 
-int common_handler(Program *program, OperatorLine *operator_line);
+int common_handler(OperatorLine *operator_line);
 void handle_operands(Program *program, OperatorLine *operator_line);
 #pragma region Operand handlers
 int handler_register_operand(Operand *operand, enum OperandSide side);

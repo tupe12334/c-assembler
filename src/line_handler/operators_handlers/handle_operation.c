@@ -69,7 +69,7 @@ void handle_operation(Program *program, Dictionary *label_table,
 
   validate_operator(operator_line);
 
-  binary_code = common_handler(program, operator_line);
+  binary_code = common_handler(operator_line);
   program_append(program, binary_code, false);
 
   handle_operands(program, operator_line);
