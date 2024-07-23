@@ -17,13 +17,11 @@ void handle_instructions(Program *program, Dictionary *label_table,
   } else if (strcmp(instruction, ".data") == 0) {
     handle_data(program, parsed_line);
     return;
-  }
-  /*
-   else if (strcmp(instruction, ".extern") == 0) {
-    handle_externals(program, parsed_line);
+  } else if (strcmp(instruction, ".extern") == 0) {
+    handle_externals(program, label_table, parsed_line);
     return;
   }
-  */
+
   /*  else if (strcmp(instruction, ".entry") == 0) {
     return;
 }*/

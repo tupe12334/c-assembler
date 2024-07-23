@@ -24,8 +24,7 @@ int handle_operand(Operand *operand, Dictionary *label_table,
     if (pase == FIRST_RUN) {
       break;
     }
-    binary_code += RELOCATABLE;
-    binary_code += handle_label_operand(operand, label_table, side);
+    binary_code = handle_label_operand(operand, label_table, side);
     printf("Binary code for label %s: %d\n", operand->value, binary_code);
     break;
   case REGISTER_VALUE:
