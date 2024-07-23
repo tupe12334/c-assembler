@@ -10,4 +10,4 @@ void line_handler(Program *program, Dictionary *label_table,
 void handle_operation(Program *program, Dictionary *label_table,
                       ParsedLine *parsed_line, enum AssemblerPase pase);
 void handle_instructions(Program *program, Dictionary *label_table,
-                         ParsedLine *parsed_line);
+                         ParsedLine *parsed_line, enum AssemblerPase pase);

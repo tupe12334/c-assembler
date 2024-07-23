@@ -28,6 +28,8 @@ void append_externals(Program *program, string line) {
   program->externals = str_append(program->externals, line);
 }
 
-void append_entry(Program *program, string line) {
-  program->entry = str_append(program->externals, line);
+void append_entry(Program *program, string label, string address) {
+  program->entry =
+      str_append(program->entry,
+                 str_append(label, str_append(" ", str_append(address, "\n"))));
 }

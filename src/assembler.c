@@ -40,4 +40,5 @@ void assemble(FILE *assembly_file, File_Meta file_meta,
   pass_handler(program, post_macro_file, label_table, meta_assembler);
   ob_builder(program, file_meta.filename);
   ext_builder(program, file_meta.filename);
+  ent_builder(program, file_meta.filename);
 }

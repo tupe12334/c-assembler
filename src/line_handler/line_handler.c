@@ -22,22 +22,25 @@ void line_handler(Program *program, Dictionary *label_table,
   const int pase = meta_assembler->pase;
 
   start_line_handler_log(parsed_line);
-  if (parsed_line->tokens.label != NULL && pase == FIRST_RUN) {
-    program_index = program_size(program);
-    sprintf(program_address, "%zu", program_index);
+  if (parsed_line->tokens.label != NULL) {
+    if (pase == FIRST_RUN) {
 
-    debug_table_work(label_table, parsed_line->tokens.label, program_address);
+      program_index = program_size(program);
+      sprintf(program_address, "%zu", program_index);
 
-    insert(label_table, parsed_line->tokens.label, program_address);
+      debug_table_work(label_table, parsed_line->tokens.label, program_address);
 
-    debug_table_work(label_table, parsed_line->tokens.label, program_address);
+      insert(label_table, parsed_line->tokens.label, program_address);
+
+      debug_table_work(label_table, parsed_line->tokens.label, program_address);
+    }
   }
   switch (parsed_line->line_type) {
   case OPERATION:
     handle_operation(program, label_table, parsed_line, pase);
     break;
   case INSTRUCTION:
-    handle_instructions(program, label_table, parsed_line);
+    handle_instructions(program, label_table, parsed_line, pase);
     break;
   case EMPTY:
   case MACRO:

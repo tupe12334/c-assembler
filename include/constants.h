@@ -6,3 +6,4 @@
 enum OperandSide { SRC, DST };
 #define ASSEMBLY_FILE_EXTENSION ".as"
 #define EXTERNAL_LABEL_FLAG "external"
+#define ENTRY_LABEL_FLAG "entry"

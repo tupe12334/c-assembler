@@ -8,7 +8,7 @@
 #include <string.h>
 
 void handle_instructions(Program *program, Dictionary *label_table,
-                         ParsedLine *parsed_line) {
+                         ParsedLine *parsed_line, enum AssemblerPase pase) {
 
   const string instruction = parsed_line->tokens.type;
   if (strcmp(instruction, ".string") == 0) {
@@ -18,12 +18,11 @@ void handle_instructions(Program *program, Dictionary *label_table,
     handle_data(program, parsed_line);
     return;
   } else if (strcmp(instruction, ".extern") == 0) {
-    handle_externals(program, label_table, parsed_line);
+    handle_externals(label_table, parsed_line);
+    return;
+  } else if (strcmp(instruction, ".entry") == 0 && pase == SECOND_RUN) {
+    handle_entries(program, label_table, parsed_line);
     return;
   }
-
-  /*  else if (strcmp(instruction, ".entry") == 0) {
-    return;
-}*/
   return;
 }

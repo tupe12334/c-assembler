@@ -3,7 +3,7 @@ import { existsSync } from "fs";
 
 describe("testing external builder", () => {
   test.each(["ps"])(
-    "testing object builder on %s",
+    "testing externals builder on %s",
     async (fileName: string) => {
       const fileExtension = "ext";
       // compare macro.am in examples with macro.am in expectations
