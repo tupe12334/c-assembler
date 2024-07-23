@@ -6,7 +6,7 @@
 
 void validate_operand(Operand *operand,
                       unsigned short int valid_address_codes[]) {
-  bool is_have_options;
+  Bool is_have_options;
   int i = 0;
   while (valid_address_codes[i] >= 0 && valid_address_codes[i] <= 3) {
     i++;

@@ -3,4 +3,4 @@
 #define false 0
 #define true 1
 
-typedef unsigned short int bool;
+typedef unsigned short int Bool;

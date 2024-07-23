@@ -38,19 +38,19 @@ int handle_operand(Program *program, Operand *operand, Dictionary *label_table,
 
 void handle_operands(Program *program, Dictionary *label_table,
                      OperatorLine *operator_line, enum AssemblerPase pase) {
-  bool is_have_src = operator_line->operand_src != NULL;
-  bool is_have_dst = operator_line->operand_dst != NULL;
+  Bool is_have_src = operator_line->operand_src != NULL;
+  Bool is_have_dst = operator_line->operand_dst != NULL;
 
   if (is_have_dst && is_have_src) {
-    bool is_src_register =
+    Bool is_src_register =
         operator_line->operand_src->address_type == REGISTER_VALUE ||
         operator_line->operand_src->address_type == REGISTER_ADDRESS;
 
-    bool is_dst_register =
+    Bool is_dst_register =
         operator_line->operand_dst->address_type == REGISTER_VALUE ||
         operator_line->operand_dst->address_type == REGISTER_ADDRESS;
 
-    bool is_both_registers = is_dst_register && is_src_register;
+    Bool is_both_registers = is_dst_register && is_src_register;
 
     if (is_both_registers) {
       int binary_code = ABSOLUTE;
