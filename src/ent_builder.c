@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 void ent_builder(Program *program, string filename) {
-  int i;
   string ent_filename = str_append(filename, ".ent");
   if (safe_strlen(program->entry) == 0) {
     return;

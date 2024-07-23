@@ -6,7 +6,7 @@
 #include "program.h"
 
 void line_handler(Program *program, Dictionary *label_table,
-                  ParsedLine *parsed_line, MetaAssembler *meta_assembler);
+                  ParsedLine *parsed_line, enum AssemblerPase pase);
 void handle_operation(Program *program, Dictionary *label_table,
                       ParsedLine *parsed_line, enum AssemblerPase pase);
 void handle_instructions(Program *program, Dictionary *label_table,

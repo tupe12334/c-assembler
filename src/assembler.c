@@ -15,14 +15,16 @@
 void assemble(FILE *assembly_file, File_Meta file_meta,
               MetaAssembler *meta_assembler) {
   FILE *post_macro_file;
-
+  Program *setup_program;
+  Dictionary *label_table;
+  Program *program;
   meta_assembler->pase = PRE_MACRO;
   macros_handler(assembly_file, file_meta.filename);
   post_macro_file = fetch_postmacro_file(file_meta.filename);
-  Program *setup_program = malloc(sizeof(Program));
+  setup_program = malloc(sizeof(Program));
   program_init(setup_program);
   puts("Fetched file post macro");
-  Dictionary *label_table;
+
   label_table = create_dictionary();
 
   meta_assembler->pase = FIRST_RUN;
@@ -35,7 +37,8 @@ void assemble(FILE *assembly_file, File_Meta file_meta,
   puts(COMMENT_LINE_BREAK);
 
   meta_assembler->pase = SECOND_RUN;
-  Program *program = malloc(sizeof(Program));
+
+  program = malloc(sizeof(Program));
   program_init(program);
   pass_handler(program, post_macro_file, label_table, meta_assembler);
   ob_builder(program, file_meta.filename);

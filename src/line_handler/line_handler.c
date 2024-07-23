@@ -14,12 +14,10 @@ void debug_table_work(Dictionary *label_table, string label, string address) {
          lookup(label_table, label));
 }
 
-// TODO change from meta assembler to AssemblerPase
 void line_handler(Program *program, Dictionary *label_table,
-                  ParsedLine *parsed_line, MetaAssembler *meta_assembler) {
+                  ParsedLine *parsed_line, enum AssemblerPase pase) {
   size_t program_index;
   char program_address[4];
-  const int pase = meta_assembler->pase;
 
   start_line_handler_log(parsed_line);
   if (parsed_line->tokens.label != NULL) {

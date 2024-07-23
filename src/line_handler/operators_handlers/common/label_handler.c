@@ -10,12 +10,14 @@
 int handle_label_operand(Program *program, Operand *operand,
                          Dictionary *label_table, enum OperandSide side) {
   string lookup_value;
+  unsigned int address_int;
+
   lookup_value = lookup(label_table, operand->value);
   if (lookup_value == NULL) {
-    // TODO if not finding the label throw
     exit(EXIT_FAILURE);
   }
   if (strcmp(lookup_value, EXTERNAL_LABEL_FLAG) == 0) {
+    string line;
     int number_address = program_size(program);
     char temp_str[4];
     string address_str;
@@ -27,14 +29,14 @@ int handle_label_operand(Program *program, Operand *operand,
       address_str = str_append("0", temp_str);
     }
 
-    string line = str_append(
-        str_append(str_append(operand->value, " "), address_str), "\n");
+    line = str_append(str_append(str_append(operand->value, " "), address_str),
+                      "\n");
 
     append_externals(program, line);
     return EXTERNAL;
   }
 
-  unsigned int address_int = atoi(lookup_value) + IC_STARTING_NUMBER;
+  address_int = atoi(lookup_value) + IC_STARTING_NUMBER;
 
   free(lookup_value);
   lookup_value = NULL;

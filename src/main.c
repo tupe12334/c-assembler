@@ -16,10 +16,11 @@ int main(int argc, string argv[]) {
     string file_name = argv[i];
     File_Meta file_meta;
     MetaAssembler *meta_assembler;
+    string full_file_name;
 
     meta_assembler = (MetaAssembler *)malloc(sizeof(MetaAssembler));
 
-    string full_file_name = str_append(file_name, ASSEMBLY_FILE_EXTENSION);
+    full_file_name = str_append(file_name, ASSEMBLY_FILE_EXTENSION);
     validate_file_access(full_file_name);
 
     file = fetch_file(full_file_name);

@@ -11,14 +11,12 @@ int common_handler(OperatorLine *operator_line) {
 
   op_code_binary_section = operator_line->opcode << 11;
   binary_code += op_code_binary_section;
-  if (operator_line != NULL && operator_line->operand_dst != NULL &&
-      operator_line->operand_dst->address_type != NULL) {
+  if (operator_line != NULL && operator_line->operand_dst != NULL) {
     int dst_address_binary_section = operator_line->operand_dst->address_type
                                      << 3;
     binary_code += dst_address_binary_section;
   }
-  if (operator_line != NULL && operator_line->operand_src != NULL &&
-      operator_line->operand_src->address_type != NULL) {
+  if (operator_line != NULL && operator_line->operand_src != NULL) {
     int src_address_binary_section = operator_line->operand_src->address_type
                                      << 7;
     binary_code += src_address_binary_section;
