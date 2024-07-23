@@ -62,15 +62,14 @@ void validate_operator(OperatorLine *operator_line) {
 }
 
 void handle_operation(Program *program, Dictionary *label_table,
-                      ParsedLine *parsed_line) {
+                      ParsedLine *parsed_line, enum AssemblerPase pase) {
   OperatorLine *operator_line;
   int binary_code;
   operator_line = parse_operator_line(parsed_line);
 
   validate_operator(operator_line);
-
   binary_code = common_handler(operator_line);
   program_append(program, binary_code, false);
 
-  handle_operands(program, operator_line);
+  handle_operands(program, label_table, operator_line, pase);
 }

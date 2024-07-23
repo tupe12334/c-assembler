@@ -1,4 +1,6 @@
+#include "../../../../include/assembler.h"
 #include "../../../../include/bool.h"
+#include "../../../../include/dictionary.h"
 #include "../../../../include/line.h"
 #include "../../../../include/operators_handlers.h"
 #include "../../../../include/program.h"
@@ -6,7 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int handle_operand(Operand *operand, enum OperandSide side) {
+int handle_operand(Operand *operand, Dictionary *label_table,
+                   enum OperandSide side, enum AssemblerPase pase) {
   int binary_code = 0;
   if (operand == NULL) {
     fprintf(stderr, "Invalid operand\n");
@@ -17,11 +20,13 @@ int handle_operand(Operand *operand, enum OperandSide side) {
     binary_code += ABSOLUTE;
     binary_code += handle_number_operand(operand, side);
     break;
-    /*
-     case LABEL:
-    //   binary_code += RELOCATABLE;
-    //   binary_code += handle_label_operand(operand, side);
-    */
+  case LABEL:
+    if (pase == FIRST_RUN) {
+      break;
+    }
+    binary_code += RELOCATABLE;
+    binary_code += handle_label_operand(operand, label_table, side);
+    printf("Binary code for label %s: %d\n", operand->value, binary_code);
     break;
   case REGISTER_VALUE:
   case REGISTER_ADDRESS:
@@ -33,7 +38,8 @@ int handle_operand(Operand *operand, enum OperandSide side) {
   return binary_code;
 }
 
-void handle_operands(Program *program, OperatorLine *operator_line) {
+void handle_operands(Program *program, Dictionary *label_table,
+                     OperatorLine *operator_line, enum AssemblerPase pase) {
   bool is_have_src = operator_line->operand_src != NULL;
   bool is_have_dst = operator_line->operand_dst != NULL;
 
@@ -58,11 +64,13 @@ void handle_operands(Program *program, OperatorLine *operator_line) {
   }
 
   if (is_have_src) {
-    int binary_code = handle_operand(operator_line->operand_src, SRC);
+    int binary_code =
+        handle_operand(operator_line->operand_src, label_table, SRC, pase);
     program_append(program, binary_code, false);
   }
   if (is_have_dst) {
-    int binary_code = handle_operand(operator_line->operand_dst, DST);
+    int binary_code =
+        handle_operand(operator_line->operand_dst, label_table, DST, pase);
     program_append(program, binary_code, false);
   }
 }
