@@ -20,7 +20,7 @@ int handle_label_operand(Program *program, Operand *operand,
     string line;
     int number_address = program_size(program);
     char temp_str[4];
-    string address_str;
+    string address_str = malloc(strlen(temp_str) + 1);
     sprintf(temp_str, "%d", number_address + IC_STARTING_NUMBER);
 
     strcpy(address_str, temp_str);
