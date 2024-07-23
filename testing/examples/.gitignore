@@ -1,2 +1,4 @@
 *.am
 *.ob
+*.ext
+*.ent

@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import { existsSync } from "fs";
 
 describe("testing external builder", () => {
   test.each(["ps"])(
@@ -17,4 +18,8 @@ describe("testing external builder", () => {
       expect(generatedFile).toBe(expectedFile);
     }
   );
+  it("should not generate .ext file if there is not .external", () => {
+    const fileExists = existsSync(`./examples/several_nums_data.ext`);
+    expect(fileExists).toBe(false);
+  });
 });
