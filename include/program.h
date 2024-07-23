@@ -11,6 +11,7 @@ typedef struct {
   int data_lines;
   int code_lines;
   string externals;
+  string entry;
 } Program;
 
 int program_code_lines(Program *program);
@@ -19,3 +20,4 @@ void program_append(Program *program, array_data decimal_value, bool is_data);
 void program_init(Program *program);
 size_t program_size(Program *program);
 void append_externals(Program *program, string line);
+void append_entry(Program *program, string line);

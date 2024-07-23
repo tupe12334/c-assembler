@@ -10,6 +10,7 @@ void program_init(Program *program) {
   program->darray = (DynamicArray *)malloc(sizeof(DynamicArray));
   darray_init(program->darray, 2);
   program->externals = "";
+  program->entry = "";
   program->data_lines = 0;
   program->code_lines = 0;
 }
@@ -25,4 +26,8 @@ void append_externals(Program *program, string line) {
   printf("🔗 Appending to externals: %s\n", line);
   printf("🔗 Current externals: %s\n", program->externals);
   program->externals = str_append(program->externals, line);
+}
+
+void append_entry(Program *program, string line) {
+  program->entry = str_append(program->externals, line);
 }
