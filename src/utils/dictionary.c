@@ -28,6 +28,7 @@ Dictionary *create_dictionary(void) {
 }
 
 void insert(Dictionary *dict, const string key, const VALUE_TYPE value) {
+  printf("➕📖 Inserting to key: %s, value: %s\n", key, value);
   unsigned int index = hash(key);
   Entry *new_entry = (Entry *)malloc(sizeof(Entry));
   if (new_entry == NULL) {
@@ -41,16 +42,20 @@ void insert(Dictionary *dict, const string key, const VALUE_TYPE value) {
   dict->table[index] = new_entry;
 }
 VALUE_TYPE lookup(Dictionary *dict, const string key) {
+  printf("🔍📖 Looking up key: %s\n", key);
   unsigned int index = hash(key);
   Entry *entry = dict->table[index];
 
   while (entry != NULL) {
     if (strcmp(entry->key, key) == 0) {
-      return entry->value;
+      printf("🔍📖 Found key: %s, value: %s\n", entry->key, entry->value);
+      VALUE_TYPE value = entry->value;
+      return value;
     }
     entry = entry->next;
   }
 
+  printf("🔍📖❌ Not found key: %s\n", key);
   return NULL;
 }
 void free_dictionary(Dictionary *dict) {

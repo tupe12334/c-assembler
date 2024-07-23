@@ -87,6 +87,7 @@ void macros_handler(FILE *assembly_file, string filename) {
   }
 
   free_dictionary(dictionary);
+  dictionary = NULL;
   free(tokenize_line);
   free(am_filename);
   free(macro_recording);
