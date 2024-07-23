@@ -1,13 +1,14 @@
 #include "../../../../include/constants.h"
 #include "../../../../include/dictionary.h"
 #include "../../../../include/line.h"
+#include "../../../../include/program.h"
 #include "../../../../include/regex.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int handle_label_operand(Operand *operand, Dictionary *label_table,
-                         enum OperandSide side) {
+int handle_label_operand(Program *program, Operand *operand,
+                         Dictionary *label_table, enum OperandSide side) {
   string lookup_value;
   lookup_value = lookup(label_table, operand->value);
   if (lookup_value == NULL) {
@@ -15,7 +16,21 @@ int handle_label_operand(Operand *operand, Dictionary *label_table,
     exit(EXIT_FAILURE);
   }
   if (strcmp(lookup_value, EXTERNAL_LABEL_FLAG) == 0) {
-    printf("External label: %s\n", operand->value);
+    int number_address = program_size(program);
+    char temp_str[4];
+    string address_str;
+    sprintf(temp_str, "%d", number_address + IC_STARTING_NUMBER);
+
+    strcpy(address_str, temp_str);
+
+    if (number_address < 999) {
+      address_str = str_append("0", temp_str);
+    }
+
+    string line = str_append(
+        str_append(str_append(operand->value, " "), address_str), "\n");
+
+    append_externals(program, line);
     return EXTERNAL;
   }
 

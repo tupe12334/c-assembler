@@ -30,11 +30,14 @@ void assemble(FILE *assembly_file, File_Meta file_meta,
 
   free(setup_program);
   setup_program = NULL;
+
   puts("Finished the first run");
   puts(COMMENT_LINE_BREAK);
+
   meta_assembler->pase = SECOND_RUN;
   Program *program = malloc(sizeof(Program));
   program_init(program);
   pass_handler(program, post_macro_file, label_table, meta_assembler);
   ob_builder(program, file_meta.filename);
+  ext_builder(program, file_meta.filename);
 }

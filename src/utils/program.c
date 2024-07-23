@@ -1,5 +1,6 @@
 #include "../../include/program.h"
 #include "../../include/dynamic_array.h"
+#include <stdio.h>
 
 int program_data_lines(Program *array) { return array->data_lines; }
 
@@ -8,8 +9,7 @@ int program_code_lines(Program *array) { return array->code_lines; }
 void program_init(Program *program) {
   program->darray = (DynamicArray *)malloc(sizeof(DynamicArray));
   darray_init(program->darray, 2);
-  program->externals = (DynamicArray *)malloc(sizeof(DynamicArray));
-  darray_init(program->externals, 2);
+  program->externals = "";
   program->data_lines = 0;
   program->code_lines = 0;
 }
@@ -21,6 +21,8 @@ void program_append(Program *program, array_data decimal_value, bool is_data) {
 
 size_t program_size(Program *program) { return darray_size(program->darray); }
 
-void append_externals(Program *program, array_data decimal_value) {
-  darray_append(program->externals, decimal_value);
+void append_externals(Program *program, string line) {
+  printf("🔗 Appending to externals: %s\n", line);
+  printf("🔗 Current externals: %s\n", program->externals);
+  program->externals = str_append(program->externals, line);
 }

@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int handle_operand(Operand *operand, Dictionary *label_table,
+int handle_operand(Program *program, Operand *operand, Dictionary *label_table,
                    enum OperandSide side, enum AssemblerPase pase) {
   int binary_code = 0;
   if (operand == NULL) {
@@ -24,8 +24,7 @@ int handle_operand(Operand *operand, Dictionary *label_table,
     if (pase == FIRST_RUN) {
       break;
     }
-    binary_code = handle_label_operand(operand, label_table, side);
-    printf("Binary code for label %s: %d\n", operand->value, binary_code);
+    binary_code = handle_label_operand(program, operand, label_table, side);
     break;
   case REGISTER_VALUE:
   case REGISTER_ADDRESS:
@@ -63,13 +62,13 @@ void handle_operands(Program *program, Dictionary *label_table,
   }
 
   if (is_have_src) {
-    int binary_code =
-        handle_operand(operator_line->operand_src, label_table, SRC, pase);
+    int binary_code = handle_operand(program, operator_line->operand_src,
+                                     label_table, SRC, pase);
     program_append(program, binary_code, false);
   }
   if (is_have_dst) {
-    int binary_code =
-        handle_operand(operator_line->operand_dst, label_table, DST, pase);
+    int binary_code = handle_operand(program, operator_line->operand_dst,
+                                     label_table, DST, pase);
     program_append(program, binary_code, false);
   }
 }

@@ -11,8 +11,8 @@ void handle_operands(Program *program, Dictionary *label_table,
                      OperatorLine *operator_line, enum AssemblerPase pase);
 #pragma region Operand handlers
 int handler_register_operand(Operand *operand, enum OperandSide side);
-int handle_label_operand(Operand *operand, Dictionary *label_table,
-                         enum OperandSide side);
+int handle_label_operand(Program *program, Operand *operand,
+                         Dictionary *label_table, enum OperandSide side);
 int handle_number_operand(Operand *operand, enum OperandSide side);
 #pragma endregion
 void valid_mov_operands(OperatorLine *operator_line);
