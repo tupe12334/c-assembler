@@ -30,7 +30,8 @@ void assemble(FILE *assembly_file, File_Meta file_meta,
 
   free(setup_program);
   setup_program = NULL;
-
+  puts("Finished the first run");
+  puts(COMMENT_LINE_BREAK);
   meta_assembler->pase = SECOND_RUN;
   Program *program = malloc(sizeof(Program));
   program_init(program);
