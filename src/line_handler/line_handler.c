@@ -5,10 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void start_line_handler_log(ParsedLine *parsed_line) {
-  printf("Starting line handler for line %s\n", parsed_line->tokens.line);
-}
-
 void debug_table_work(Dictionary *label_table, string label, string address) {
   printf("The existing value for key: %s is %s\n", label,
          lookup(label_table, label));
@@ -19,7 +15,7 @@ void line_handler(Program *program, Dictionary *label_table,
   size_t program_index;
   char program_address[4];
 
-  start_line_handler_log(parsed_line);
+  printf("Starting line handler for line %s\n", parsed_line->tokens.line);
   if (parsed_line->tokens.label != NULL) {
     if (pase == FIRST_RUN) {
 
