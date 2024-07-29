@@ -9,15 +9,16 @@
 
 void handle_instructions(Program *program, Dictionary *label_table,
                          ParsedLine *parsed_line, enum AssemblerPase pase) {
-
-  const string instruction = parsed_line->tokens.type;
+  string instruction;
+  printf("Handling instruction: %s\n", parsed_line->tokens.line);
+  instruction = parsed_line->tokens.type;
   if (strcmp(instruction, ".string") == 0) {
     handle_string(program, parsed_line);
     return;
   } else if (strcmp(instruction, ".data") == 0) {
     handle_data(program, parsed_line);
     return;
-  } else if (strcmp(instruction, ".extern") == 0) {
+  } else if (strcmp(instruction, ".extern") == 0 && pase == FIRST_RUN) {
     handle_externals(label_table, parsed_line);
     return;
   } else if (strcmp(instruction, ".entry") == 0 && pase == SECOND_RUN) {

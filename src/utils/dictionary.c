@@ -1,5 +1,4 @@
 #include "../../include/dictionary.h"
-#include "../../include/bool.h"
 #include "../../include/errors.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,16 +28,17 @@ Dictionary *create_dictionary(void) {
 }
 
 void insert(Dictionary *dict, const string key, const VALUE_TYPE value) {
-  /* printf("➕📖 Inserting to key: %s, value: %s\n", key, value); */
+  string current_value;
   unsigned int index;
   Entry *new_entry;
-  string current_value = lookup(dict, key);
-  printf("Key: %s Value: %s\n", key, current_value);
+  printf("➕📖 Inserting to key: %s, value: %s\n", key, value);
+  current_value = lookup(dict, key);
   if (current_value != NULL) {
-    puts("dasflkjgakdsfj");
     fprintf(stderr, DOUBLE_LABEL_DECLARATION_ERROR);
     exit(DOUBLE_LABEL_DECLARATION_ERROR_CODE);
   }
+  free(current_value);
+  current_value = NULL;
   index = hash(key);
   new_entry = (Entry *)malloc(sizeof(Entry));
   if (new_entry == NULL) {
@@ -82,6 +82,7 @@ void free_dictionary(Dictionary *dict) {
   }
   free(dict);
 }
+
 void update(Dictionary *dict, const string key, const VALUE_TYPE new_value) {
   unsigned int index = hash(key);
   Entry *entry = dict->table[index];

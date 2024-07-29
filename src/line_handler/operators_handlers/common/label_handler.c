@@ -14,6 +14,7 @@ int handle_label_operand(Program *program, Operand *operand,
 
   lookup_value = lookup(label_table, operand->value);
   if (lookup_value == NULL) {
+    fprintf(stderr, "Invalid label: %s\n", operand->value);
     exit(EXIT_FAILURE);
   }
   if (strcmp(lookup_value, EXTERNAL_LABEL_FLAG) == 0) {
