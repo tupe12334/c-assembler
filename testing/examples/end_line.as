@@ -1,2 +1,2 @@
-MAIN:   add     r3, LIST
-        jsr     endwithoutemptyline
+MAIN:   add     r3, r2
+        prn     #48

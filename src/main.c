@@ -27,7 +27,7 @@ int main(int argc, string argv[]) {
 
     file_meta.filename = file_name;
     assemble(file, file_meta, meta_assembler);
-
+    puts("Assembled the file");
     fclose(file);
   }
   return EXIT_SUCCESS;
