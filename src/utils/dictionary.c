@@ -31,6 +31,7 @@ Dictionary *create_dictionary(void) {
 void insert(Dictionary *dict, const string key, const VALUE_TYPE value) {
   /* printf("➕📖 Inserting to key: %s, value: %s\n", key, value); */
   unsigned int index;
+  Entry *new_entry;
   string current_value = lookup(dict, key);
   printf("Key: %s Value: %s\n", key, current_value);
   if (current_value != NULL) {
@@ -39,7 +40,7 @@ void insert(Dictionary *dict, const string key, const VALUE_TYPE value) {
     exit(DOUBLE_LABEL_DECLARATION_ERROR_CODE);
   }
   index = hash(key);
-  Entry *new_entry = (Entry *)malloc(sizeof(Entry));
+  new_entry = (Entry *)malloc(sizeof(Entry));
   if (new_entry == NULL) {
     fprintf(stderr, "Unable to allocate memory for new entry.\n");
     exit(EXIT_FAILURE);
@@ -87,19 +88,16 @@ void update(Dictionary *dict, const string key, const VALUE_TYPE new_value) {
 
   while (entry != NULL) {
     if (strcmp(entry->key, key) == 0) {
-      // Key found, update the value
       char *new_value_copy = strdup(new_value);
       if (new_value_copy == NULL) {
         fprintf(stderr, "Unable to allocate memory for new value.\n");
         exit(EXIT_FAILURE);
       }
-      // free(entry->value);            // Free the old value
-      entry->value = new_value_copy; // Set the new value
+      entry->value = new_value_copy;
       return;
     }
     entry = entry->next;
   }
 
-  // Key not found, insert a new entry
   insert(dict, key, new_value);
 }
