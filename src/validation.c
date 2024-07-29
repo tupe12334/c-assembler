@@ -1,4 +1,4 @@
-
+#include "../include/errors.h"
 #include "../include/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,8 +7,8 @@
 
 void validate_at_least_one_input(int argc) {
   if (argc < 2) {
-    fprintf(stderr, "Missing files for assembler\n");
-    exit(EXIT_FAILURE);
+    fprintf(stderr, MISSING_AS_FILE_ERROR);
+    exit(MISSING_AS_FILE_ERROR_CODE);
   }
 }
 void validate_file_access(string full_file_name) {

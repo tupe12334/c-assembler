@@ -1,6 +1,8 @@
 import { glob } from "glob";
 import { runAssembler } from "./runner";
 import { rm } from "fs/promises";
+import { join } from "path";
+import { testingFolder } from "./constants";
 
 async function main() {
   /* delete all files that are not .as */
@@ -13,7 +15,7 @@ async function main() {
   const asFiles = await glob("./examples/**.as");
   for (const file of asFiles) {
     const fileWithoutExt = file.substring(0, file.length - 3);
-    runAssembler(fileWithoutExt);
+    const runnerPromise = runAssembler(join(testingFolder, fileWithoutExt));
   }
 }
 

@@ -2,23 +2,24 @@ import { exec } from "child_process";
 import { join } from "path";
 import { mainFolder, testingFolder } from "./constants";
 
-export function runAssembler(fileName: string) {
-  const command = `${join(mainFolder, "bin/assembler")} ${join(
-    testingFolder,
-    fileName
-  )}`;
+export function runAssembler(
+  filePath: string
+): Promise<{ error: number | undefined }> {
+  const command = `${join(mainFolder, "bin/assembler")} ${filePath}`;
   console.log("====================================");
   console.log("Running command: ", command);
   console.log("====================================");
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.error(`Stderr: ${stderr}`);
-      return;
-    }
-    console.log(`Output: ${stdout}`);
+  return new Promise((resolve) => {
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error: ${JSON.stringify(error)}`);
+        return resolve({ error: error.code });
+      }
+      if (stderr) {
+        console.error(`Stderr: ${stderr}`);
+        // return resolve({ error: stderr.code });
+      }
+      return resolve({ error: undefined });
+    });
   });
 }
