@@ -1,5 +1,6 @@
 #include "../../include/dictionary.h"
 #include "../../include/bool.h"
+#include "../../include/errors.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,7 +30,15 @@ Dictionary *create_dictionary(void) {
 
 void insert(Dictionary *dict, const string key, const VALUE_TYPE value) {
   /* printf("➕📖 Inserting to key: %s, value: %s\n", key, value); */
-  unsigned int index = hash(key);
+  unsigned int index;
+  string current_value = lookup(dict, key);
+  printf("Key: %s Value: %s\n", key, current_value);
+  if (current_value != NULL) {
+    puts("dasflkjgakdsfj");
+    fprintf(stderr, DOUBLE_LABEL_DECLARATION_ERROR);
+    exit(DOUBLE_LABEL_DECLARATION_ERROR_CODE);
+  }
+  index = hash(key);
   Entry *new_entry = (Entry *)malloc(sizeof(Entry));
   if (new_entry == NULL) {
     fprintf(stderr, "Unable to allocate memory for new entry.\n");
@@ -71,4 +80,26 @@ void free_dictionary(Dictionary *dict) {
     }
   }
   free(dict);
+}
+void update(Dictionary *dict, const string key, const VALUE_TYPE new_value) {
+  unsigned int index = hash(key);
+  Entry *entry = dict->table[index];
+
+  while (entry != NULL) {
+    if (strcmp(entry->key, key) == 0) {
+      // Key found, update the value
+      char *new_value_copy = strdup(new_value);
+      if (new_value_copy == NULL) {
+        fprintf(stderr, "Unable to allocate memory for new value.\n");
+        exit(EXIT_FAILURE);
+      }
+      // free(entry->value);            // Free the old value
+      entry->value = new_value_copy; // Set the new value
+      return;
+    }
+    entry = entry->next;
+  }
+
+  // Key not found, insert a new entry
+  insert(dict, key, new_value);
 }

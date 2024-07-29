@@ -36,7 +36,7 @@ void handle_recording(string *macro_recording, TokenizedLine *tokenized_line,
     strcat(combine_values, "\n");
   }
   strcat(combine_values, tokenized_line->line);
-  insert(dictionary, *macro_recording, combine_values);
+  update(dictionary, *macro_recording, combine_values);
   free(dictionary_value);
   free(combine_values);
 }

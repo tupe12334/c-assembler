@@ -21,3 +21,4 @@ Dictionary *create_dictionary(void);
 void insert(Dictionary *dict, const string key, const VALUE_TYPE value);
 VALUE_TYPE lookup(Dictionary *dict, const string key);
 void free_dictionary(Dictionary *dict);
+void update(Dictionary *dict, const string key, const VALUE_TYPE new_value);
